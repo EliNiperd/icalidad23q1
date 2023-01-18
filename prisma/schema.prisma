@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+
+model gen_templeado{
+  IdEmpleado          Int @id @default(autoincrement())
+  NombreEMpleado      String  @db.NVarChar(200) 
+  UserName            String @db.NVarChar(40)
+  Password            String @db.NVarChar(40)
+  FechaAlta           DateTime @default(now())
+  Correo              String @db.NVarChar(100)
+  IdEstatusEmpleado   Boolean @default(true)
+  IdEmpleadoAlta      Int? @db.Int 
+  IdEmpleadoActualiza Int? @db.Int
+  FechaActualiza      DateTime
+  ImagenFirma         Bytes
+  Avatar              Bytes
+}
