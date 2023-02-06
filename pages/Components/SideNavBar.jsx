@@ -1,10 +1,7 @@
-//import  Link  from "next/link";
-import Link from '/pages/Components/LinkC'
-//import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import useSWR, { SWRConfig } from 'swr';
-import { useDashBoard } from "/pages/contexts/dashBoardProvider";
-import { motion } from "framer-motion"
+import useSWR, { useSWRConfig } from "swr";
+import { useContext } from "react";
+import { IcalidadContext } from "/pages/Contexts/IcalidadContext";
 
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import {
@@ -13,85 +10,133 @@ import {
   FcSurvey,
   FcAnswers,
 } from "react-icons/fc";
+//import { mutate } from "swr";
 
 
-
-
- 
-export function ElementMenu({ description, setidMenuFather, IdMenu }) {
-  const router = useRouter();
-  //const { component } = router.query;
-
+export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu, IdUser }) {
   
+
+  //const { component } = router.adquery;
+  
+  const { menuDataMenu, setDataMenu } = useContext(IcalidadContext);
+  
+ 
+
   const classVar = "text-4xl text-[#30A9ED] group-hover:text-white ";
-  let Component;
+  
+  let classNameSelected = "flex mb-2 justify-start items-center gap-2 px-2 hover:bg-[#DEF0FA] p-1 rounded-md module cursor-pointer hover:shadow-lg m-auto";
+    if ( idMenuSelected == menuDataMenu.idMenu) 
+      classNameSelected = "flex mb-2 justify-start items-center gap-2 px-2 bg-[#DEF0FA] p-1 rounded-md module shadow-lg m-auto";
 
-  Component = () => {
-    switch (description) {
-      case "iCalidad":
-        return <AiFillHome key={description}  className={classVar}  >{description}</AiFillHome>;
-        break;
-      case "Poder Documental":
-        return <FcAnswers key={description} className={classVar} onClick={() => {console.log(IdMenu); /*setidMenuFather(IdMenuPadre);*/ router.push("/DashBoard"); } }  >{description} </FcAnswers>;
-        break;
-      case "Acciones":
-        return <FcCollaboration key={description} className={classVar} />;
-        break;
-      case "Auditorías":
-        return <FcSurvey key={description} className={classVar} />;
-        break;
-      
-      case "Personal Competente":
-        return <FcConferenceCall key={description} className={classVar} />;
-        break;
-      case "Configuración iCalidad":
-        return <AiFillSetting key={description} className={classVar} />;
-        break;
-      default:
-        <FcAnswers key={description} className={classVar} />;
-        break;
-    }
-  };
-return (
-  <>
-      <div className="my-2 border-b border-gray-100 w-full">
-        <div
-          className="flex mb-2 justify-start items-center gap-2 px-2 hover:bg-[#30A9ED] p-1 rounded-md
-          module cursor-pointer hover:shadow-lg m-auto" >
-          <Component />
-          <h3 className="text-sm text-gray-800 group-hover:text-white font-semibold">
-            {description}
-          </h3>
+    let Component;
+    Component = () => {
+      switch (description) {
+        case "iCalidad":
+          return (
+            <AiFillHome key={description} className={classVar}>
+              {description}
+            </AiFillHome>
+          );
+          break;
+        case "Poder Documental":
+          return (
+            <FcAnswers key={description} className={classVar}>
+              {description}{" "}
+            </FcAnswers>
+          );
+          break;
+        case "Acciones":
+          return <FcCollaboration key={description} className={classVar} />;
+          break;
+        case "Auditorías":
+          return <FcSurvey key={description} className={classVar} />;
+          break;
+
+        case "Personal Competente":
+          return <FcConferenceCall key={description} className={classVar} />;
+          break;
+        case "Configuración iCalidad":
+          return <AiFillSetting key={description} className={classVar} />;
+          break;
+        default:
+          <FcAnswers key={description} className={classVar} />;
+          break;
+      }
+    };
+    const router = useRouter();
+    
+    function modifyMenuDataMenu(e,idMenuSelected, idMenuFather, urlMenu) {
+      e.preventDefault();
+      //alert(urlMenu);
+      const idiCalidad = 23;
+       setDataMenu({
+         ...menuDataMenu,
+         idMenu: idMenuSelected,
+         idMenuFather: idMenuFather !== idMenuSelected ? idMenuSelected : idMenuFather,
+       });
+      if(idMenuFather !== idMenuSelected){
+        //const { data, error } = mutate(`/api/User/dasBoardUser/${IdUser}/${idiCalidad}/${idMenuSelected}`);
+       
+        router.push(urlMenu);
+      }
+       
+     }
+
+    return (
+      <>
+        <div className="my-2 border-b border-gray-100 w-full">
+          <div
+            onClick={(e) => modifyMenuDataMenu(e,idMenuSelected, idMenuFather, urlMenu)}
+            className={classNameSelected} >
+            <Component />
+            <h3 className="text-sm text-gray-800 group-hover:text-white font-semibold">
+              {description}
+            </h3>
+          </div>
         </div>
-      </div>
       </>
-  )
-}
-
-//const getDataMenu = ( idUser, idiCalidad, idMenuFather) =>{
-  //const { data, error } =  useSWR(`/api/User/dasBoardUser/${idUser}/${23}/{}`)
-
-//}
+    );
+  }
 
 
-let datosMenu;
+//  let datosMenu;
 
- function SideNavBar({ idUser}) {
+  function SideNavBar({ idUser }) {
+    const { menuDataMenu, setDataMenu } = useContext(IcalidadContext);
+    const idiCalidad = 23; // Se utiliza fijo para el menú del iCalidad ver. 2023 Q1
+    const { data, error } = useSWR(
+      `/api/User/dasBoardUser/${idUser}/${idiCalidad}/${menuDataMenu.idMenuFather}`
+    );
+    const { mutate } = useSWRConfig()
+   const {datam, errorm} = mutate(`/api/User/dasBoardUser/${idUser}/${idiCalidad}/${menuDataMenu.idMenu}`)
+   console.log(datam, 'error: ', errorm, 'idMenuFaher: ', menuDataMenu.idMenu);
+    //alert(urlMenu + ' IdMenuSelected: ' + idMenuSelected + ' idMenuFather: ' + idMenuFather);
 
-  const { activeMenu, setActiveMenu, idMenuFather, setidMenuFather } = useDashBoard();
-  console.log('IdMenuFather: ', idMenuFather);
-
-
-  //const activeMenu = true;
-  const idiCalidad = 23;
-
-  const { data, error } =  useSWR(`/api/User/dasBoardUser/${idUser}/${idiCalidad}/${idMenuFather}`)
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
   return (
     <>
-      <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
-        <Link
+      <div className="ml-3  h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto ">
+        <div className="mt-16 flex-col  border-r border-gray-100 shadow-md shadow-slate-500  rounded-tr-lg rounded-br-lg  ">
+          {data.recordset.map((item) => (
+            <div key={item.IdMenu} className=" m-3 mt-4 " >
+                <ElementMenu description={item.Menu} idMenuSelected={item.IdMenu} idMenuFather={item.IdMenuPadre} urlMenu={item.URL} IdUser={idUser} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default SideNavBar;
+
+
+
+/*
+
+
+<Link
           href="/DashBoard" onClick={() => setActiveMenu(false)}
           alt="Dashboard"
           className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
@@ -101,22 +146,10 @@ let datosMenu;
           </div>
         </Link>
 
-        <div className="mt-10">
-          {data.recordset.map((item) => (
-            <div key={item.IdMenu} className="text-gray-400 m-3 mt-4 ">
-              <ElementMenu description={item.Menu} IdMenu={item.IdMenu} setidMenuFather />
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-}
- 
 
 
 
-/*export async function getServerSideProps(context) {
+export async function getServerSideProps(context) {
   const session = await getSession({ context });
 
 
@@ -131,75 +164,7 @@ let datosMenu;
 }
 */
 
-export default SideNavBar;
 
-
-
-/*
-//import { NavLink } from 'react-router-dom';
-import  Link  from "next/link";
-import Image from "next/image";
-import useSWR from 'swr';
-import { useSession } from "next-auth/react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { Disclosure } from "@headlessui/react";
-import { AiFillHome, AiFillSetting } from "react-icons/ai";
-import { useRouter } from "next/router";
-import { LogoutIcon } from '/public/exit-sign-64.png';
-//import { BsFillDiagram3Fill, BsFillPeopleFill } from "react-icons/bs"
-import {
-  FcConferenceCall,
-  FcCollaboration,
-  FcSurvey,
-  FcAnswers,
-} from "react-icons/fc";
-//FcReading
-//import SideNavBar from "./styles/SideNavBar.module.css";
-//import stylesSNB from './styles/SideNavBar/SideNavBar.module.css'
-
-
-async function SideNavBar() {
-  const activeMenu = true;
- 
-  const { data: session } = useSession();
-  const idUser = session.user.id;
-console.log(session, 'inicio api');
-  const {data: recordsets, error, isloading } = await useSWR(`/api/User/dashBoardUser/${idUser}`, fetcher);
-  //console.log('fin api', isloading);
-  //console.log('inicio Console.log', isloading);
-  //console.log('datos: ',recordsets , isloading);
-  //console.log('fin api', isloading);
-  if (error) return <div className='text-red-400' > No se pudo recuperar información del Menú para este usuario {error.message} </div>
-  if (isloading) return <div className="text-2xl">loading...</div>
-  
-  return (
-    <>
-    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
-    {
-      activeMenu && ( <>
-      <div className="flex justify-between items-center">
-        <Link href='/DashBoard' onClick={() => {}} alt='Dashboard' 
-          className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
-          <ElementMenu description={'iCalidad'} />
-        </Link>
-      </div>
-      <div className="mt-10">
-        {
-         // /*dataM.dataR.map((item) => (
-         // <div key={item.IdMenu} className="text-gray-400 m-3 mt-4 ">{item.Menu}</div>
-        //))*/
-      //}
-      ///</div>
-      //</>)}
-    //</div>
-  //</>
- // )
-//}
- 
-
-
-//export default SideNavBar;
-//*/
 /*
  
  tsc ActiveLink.tsx -t  esnext --jsx react-jsxdev --types --esModuleInterop --outFile ActiveLink.jsx
