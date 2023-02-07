@@ -1,7 +1,16 @@
-import React from 'react'
+import { useContext } from "react";
+import { IcalidadContext } from "../Contexts/IcalidadContext";
+import HomeDashBoard from "../DashBoard";
 
-export default function index() {
+const AdminDocument = () => {
+  const { menuDataMenu, setDataMenu } = useContext(IcalidadContext);
   return (
-    <div>index</div>
-  )
+    <>
+      <HomeDashBoard>
+        <div className="text-4xl  bg-slate-500 items-center text-slate-500">Admin iCalidad</div>
+      </HomeDashBoard>
+    </>
+  );
 }
+
+export default AdminDocument;

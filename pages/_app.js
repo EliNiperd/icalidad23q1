@@ -1,22 +1,24 @@
 import '../styles/globals.css'
 import { SessionProvider }  from 'next-auth/react'
 import { SWRConfig } from 'swr'
-import { DashBoardProvider } from './contexts/dashBoardProvider';
+import { IcalidadProvider } from './Contexts/IcalidadContext';
 
 function MyApp({ Component,  pageProps:
 {session, ...pageProps} }) {
+//  mutate(key, data, options)
   return (
 
+
 <SessionProvider session={ session }>
-<SWRConfig 
+<IcalidadProvider>
+  <SWRConfig 
       value={{
         fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
       }}
     >
-  <DashBoardProvider>
     <Component {...pageProps} />
-  </DashBoardProvider> 
   </SWRConfig>
+  </IcalidadProvider> 
   </SessionProvider> 
   
   )
