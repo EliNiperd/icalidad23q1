@@ -17,3 +17,5 @@ export const IcalidadProvider = ({ children }) => {
     </IcalidadContext.Provider>
   )
 }
+
+export default IcalidadProvider;
