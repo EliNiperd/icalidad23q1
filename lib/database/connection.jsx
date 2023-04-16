@@ -8,7 +8,7 @@ const dbSettings = {
   password: process.env.NEXT_PUBLIC_DB_PASS,
   database: process.env.NEXT_PUBLIC_DB_NAME,
   server: process.env.NEXT_PUBLIC_DB_HOST,
-  port: +process.env.NEXT_PUBLIC_DB_PORT,
+  port: 1433,
   pool: {
     max: 10,
     min: 0,
