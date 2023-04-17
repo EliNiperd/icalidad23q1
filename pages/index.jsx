@@ -4,7 +4,7 @@ import Image from "next/image";
 import LINK from "next/link";
 
 //import { useForm } from "react-hook-form";
-import { Formik } from 'formik';
+import { Formik, ErrorMessage  } from 'formik';
 
 import { useState, useCallback } from "react";
 import { useRouter } from "next/router";
@@ -13,6 +13,7 @@ import Loginimage from "../public/login_Secure.svg";
 import LogoNiperd from "../public/logoNiperd_image.png";
 
 import RecoverpassModal from "./RecoverPass/RecoverpassModal";
+import Alert from "./Components/BasicAlert";
 
 
 //import {  Validador } from "./Components/BasicAlert";
@@ -52,26 +53,45 @@ export default function Home() {
 
   //console.log('data', data, 'status', status);
 
-
+/*
    async (data, event) => {
-    //console.log('data', data);
-    event.preventDefault();
-    console.log("event", event);
+     //console.log('data', data);
+     event.preventDefault();
+     console.log("event", event);
 
-    const status = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-      callbackUrl: "/",
-    });
-    //console.log(status);
-    if (status.ok) router.push("/DashBoard");
-  };
+     try {
+       const status = await signIn("credentials", {
+         email: data.email,
+         password: data.password,
+         redirect: false,
+         callbackUrl: "/",
+         error: error,
+         status: data.status,
+       });
+       console.log(status);
+       //if (status === 200) router.push("/DashBoard");
+       console.log("status", status, "error", error);
+     } catch (error) {
+       console.log(error);
+     }
+   };
+*/
+
+   const [showAlert, setShowAlert] = useState(false);
+
+  //  const handleShowAlert = () => {
+  //   setShowAlert(true);
+  //  };
+
+   const handleCloseAlert = () => {
+    setShowAlert(false);
+    };
 
   return (
     <>
+    
       <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full ">
-        <div className=" flex flex-col px-8   ">
+        <div className=" flex flex-col px-8 bg-white   ">
           <div className="flex items-stretch  ">
             <div className="flex w-10 text-[102,102,102]  relative top-1">
               <Image className=" " src={LogoNiperd} alt="Logo Niperd" />
@@ -83,7 +103,7 @@ export default function Home() {
           </div>
           <div className=" flex h-full self-center  ">
             <Formik 
-              initialValues={{ email: '', password: '' }}
+              initialValues={{ email: '', password: '', error: '' }}
               validate={values => {
                 const errors={};
                 if (!values.email){
@@ -95,19 +115,34 @@ export default function Home() {
                 return errors;
               }}
              onSubmit={ async  (values, { setSubmitting }) => {
-                //setTimeout(() =>{
-                  //console.log(JSON.stringify(values, null, 2));
-
-                  const status = await signIn("credentials", {
-                    email: values.email,
-                    password: values.password,
-                    redirect: false,
-                    callbackUrl: "/",
-                  });
-                  //console.log(status);
-                  if (status.ok) router.push("/DashBoard");
-
-
+                  
+                const result = await signIn("credentials", {
+                  email: values.email,
+                  password: values.password,
+                  redirect: false,
+                  callbackUrl: "/",
+                });
+                //console.log("result", result);
+              
+                if (result?.error) {
+                  const messageError = result.error;
+                  errors.error = messageError;
+                  // Si hay un error, lo mostramos al usuario
+                  // <Alert
+                  //   position="top"
+                  //   duration={5000}
+                  //   onClose={handleCloseAlert}
+                  //   type='error'
+                  //   text={messageError}
+                  //   highlightedWords={['usuario', 'contraseña']}
+                  //    />
+                 
+                  //console.log("result.error: - ", messageError, " - showAlert: ", showAlert);
+                } else {
+                  // Si el inicio de sesión fue exitoso, redirigimos al usuario a la página de inicio
+                  router.push("/DashBoard");
+                }
+                errors.error = '';
                   setSubmitting(false);
 
                // }, 400);
@@ -129,9 +164,10 @@ export default function Home() {
                     Iniciar sesión en iCalidad
                   </h2>
                   <div className="flex flex-col font-bold py-2">
+                    
                     <label>Usuario</label>
-                    <input className="peer mt-0 block w-full px-0.5 border-0 border-b-2
-                                border-gray-200 focus:ring-0 focus:border-black"
+                    <input className="peer mt-0 block w-full px-0.5, px-0.5 py-2 pl-2
+                                outline-1 outline-gray-300  focus:outline-black rounded-md"
                       placeholder="johnD"
                       name="email"
                       autoComplete="email"
@@ -147,8 +183,8 @@ export default function Home() {
                     <label>Contraseña</label>
                     <input
                       type="password"
-                      className="peer mt-0 block w-full px-0.5, px-0.5 border-0 border-b-2
-                                border-gray-200 focus:ring-0 focus:border-black"
+                      className="peer mt-0 block w-full px-0.5, px-0.5 py-2 pl-2
+                                outline-1 outline-gray-300  focus:outline-black rounded-md"
                       placeholder="Ingresa tu contraseña"
                       name="password"
                       autoComplete="current-password"
@@ -157,7 +193,8 @@ export default function Home() {
                       value={values.password}
                     /> 
                     <div className="text-red-600 text-xs font-light">
-                      {errors.password && touched.password && errors.password}
+                      {errors.password && touched.password && errors.password && errors.error}
+                      {/* <ErrorMessage component={errors.error} name="password" /> */}
                     </div>
                   </div>
                   <div className="flex justify-between text-gray-400 py-2">

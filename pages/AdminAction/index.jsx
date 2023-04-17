@@ -1,9 +1,15 @@
-import React from 'react'
+//import HomeDashBoard from "../DashBoard";
+import Prueba from "../DashBoard/Prueba";
 
-const index = () => {
+const AdminAction = () => {
+
   return (
-    <div>index</div>
-  )
+    <>
+      <Prueba>
+        <div className="text-4xl h-full text-black text-center  bg-white ">Admin Action</div>
+      </Prueba>
+    </>
+  );
 }
 
-export default index
+export default AdminAction
