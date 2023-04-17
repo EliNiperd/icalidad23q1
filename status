@@ -1,0 +1,29 @@
+[33mcommit c6e3cbe7aa49f2683971297326634093608e5349[m[33m ([m[1;36mHEAD -> [m[1;32mfebr062023[m[33m, [m[1;32mApril2023[m[33m)[m
+Author: elirodriguez <eli.rodriguez@gmail.com>
+Date:   Fri Apr 14 14:03:36 2023 -0600
+
+    feat: add component Alert, MenuPrincipalAdm, NavBar, Search, SideNavBar. Change the functionality for the SideNavBar
+    
+    BREAKING CHANGE: The SideNavBar component has been changed, now it is a component that is called from the DashBoard component,
+                    add tailwindcss, daisyui, and change the style of the components for custom style.
+    
+    Reviwed by: @elirodriguezs
+    Refs: #1
+
+[33mcommit 018d40dcff70f192a5c07ed18a5d83e5db1e93ef[m[33m ([m[1;31morigin/febr062023[m[33m)[m
+Author: elirodriguez <eli.rodriguez@gmail.com>
+Date:   Mon Feb 6 17:13:14 2023 -0600
+
+    se agregan últimos ajustes, que incluyen las librerías para manejo de componentes
+
+[33mcommit b432131026b3c689643e8baffae793441e2b19ac[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Elí Rodríguez <eli.rodriguez@gmail.com>
+Date:   Wed Jan 18 16:13:37 2023 -0600
+
+    Commit Init iCalidad23Q1
+
+[33mcommit 38f38868ff0b70bcea961feea823eea3ad38c9ce[m
+Author: Elí Rodríguez <eli.rodriguez@gmail.com>
+Date:   Fri May 6 01:32:21 2022 -0500
+
+    Initial commit from Create Next App
