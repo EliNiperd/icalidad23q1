@@ -1,13 +1,11 @@
-import "../styles/globals.css";
-import { SessionProvider } from "next-auth/react";
-import { SWRConfig } from "swr";
-import { IcalidadProvider } from "./contexts/IcalidadContext";
-import { ChakraProvider } from "@chakra-ui/react";
-import { StrictMode } from "react";
+import '../styles/globals.css'
+import { SessionProvider }  from 'next-auth/react'
+import { SWRConfig } from 'swr'
+import { IcalidadProvider } from './Contexts/IcalidadContext';
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  //  mutate(key, data, options)
-  // refreshInterval: 3000,
+function MyApp({ Component,  pageProps:
+{session, ...pageProps} }) {
+//  mutate(key, data, options)
   return (
 
 
@@ -18,22 +16,19 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
       }}
     >
-      <ChakraProvider>
-        <StrictMode>
-            <Component {...pageProps} />
-        </StrictMode>
-      </ChakraProvider>
+    <Component {...pageProps} />
   </SWRConfig>
   </IcalidadProvider> 
-        </SessionProvider>
-     
+  </SessionProvider> 
+  
   )
 }
 
-export default MyApp;
+export default MyApp
 
 //import { getSession, SessionProvider } from "next-auth/react";
 //import useSWR, { SWRConfig } from "swr";
+
 
 /*
 export async function getStaticProps () {
@@ -55,6 +50,9 @@ function Company() {
   const { data } = useSWR(url)
   return <h1>Nada  {data.NombreEmpresa}</h1>
 }*/
+
+
+
 
 /*
 export const getSetverSideProps = async (context) => {

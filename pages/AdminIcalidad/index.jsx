@@ -1,14 +1,14 @@
-
-//import HomeDashBoard from "../DashBoard";
-import Prueba from "../DashBoard/Prueba";
+import { useContext } from "react";
+import { IcalidadContext } from "../Contexts/IcalidadContext";
+import HomeDashBoard from "../DashBoard";
 
 const AdminIcalidad = () => {
-
+    const { menuDataMenu, setDataMenu } = useContext(IcalidadContext);
   return (
     <>
-      <Prueba>
-        <div className="text-4xl h-full  bg-white text-center text-black">Admin iCalidad</div>
-      </Prueba>
+      <HomeDashBoard>
+        <div className="text-4xl max-h-screen max-w-screen bg-slate-500 items-center text-slate-500">Admin iCalidad</div>
+      </HomeDashBoard>
     </>
   );
 };

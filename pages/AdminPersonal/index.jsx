@@ -1,15 +1,8 @@
 
-import HomeDashBoard from "../DashBoard";
-
-const AdminPersonal = () => {
-
+const AdminConfiguration = () => {
   return (
-    <>
-      <HomeDashBoard>
-        <div className="text-4xl h-full text-black text-center  bg-white ">Admin Personal</div>
-      </HomeDashBoard>
-    </>
-  );
+    <div>AdminConfiguration</div>
+  )
 }
 
-export default AdminPersonal
+export default AdminConfiguration
