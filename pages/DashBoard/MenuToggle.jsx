@@ -1,4 +1,4 @@
-import { motion, useCycle } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Path = (props) => (
   <motion.path
@@ -10,7 +10,8 @@ const Path = (props) => (
   />
 );
 
-export const MenuToggle = ({ toggle }) => (
+export  const MenuToggle = ({ toggle }) => (
+  
   <>
     <button
       onClick={toggle}
@@ -42,6 +43,9 @@ export const MenuToggle = ({ toggle }) => (
    
   </>
 );
+
+export default MenuToggle;
+
 
 /*
  <motion.div className="absolute top-3 left-5 w-auto h-auto p-2 items-start rounded-md bg-[#DEF0FA] border-[#30A9ED] shadow-md shadow-slate-500"
