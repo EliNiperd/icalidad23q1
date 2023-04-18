@@ -3,8 +3,8 @@ import { useSession, getSession } from "next-auth/react";
 
 import { motion, useCycle } from "framer-motion";
 
-import { MenuToggle } from "../Components/MenuToggle";
-import { SideNavBar } from "../Components";
+import { MenuToggle } from "./MenuToggle";
+import { SideNavBar } from "../DashBoard/SideNavBar";
 
 const sidebar = {
   open: (height = 1000) => ({

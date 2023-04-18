@@ -1,7 +1,21 @@
-import { useRouter } from "next/router";
+
+import React from 'react'
+
+const SideNavBar_Old = () => {
+  return (
+    <div>SideNavBar_Old</div>
+  )
+}
+
+export default SideNavBar_Old
+
+
+/*import { useRouter } from "next/router";
 import useSWR, { useSWRConfig } from "swr";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { IcalidadContext } from "/pages/Contexts/IcalidadContext";
+import { MenuToggle } from "./MenuToggle";
+import { useCycle } from "framer-motion";
 
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import {
@@ -10,10 +24,12 @@ import {
   FcSurvey,
   FcAnswers,
 } from "react-icons/fc";
+
+*/
 //import { mutate } from "swr";
 
-
-export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu, IdUser }) {
+/*
+export function ElementMenu0({ description, idMenuSelected, idMenuFather, urlMenu, IdUser }) {
   
 
   //const { component } = router.adquery;
@@ -37,27 +53,21 @@ export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu
               {description}
             </AiFillHome>
           );
-          break;
         case "Poder Documental":
           return (
             <FcAnswers key={description} className={classVar}>
               {description}{" "}
             </FcAnswers>
           );
-          break;
         case "Acciones":
           return <FcCollaboration key={description} className={classVar} />;
-          break;
         case "Auditorías":
           return <FcSurvey key={description} className={classVar} />;
-          break;
 
         case "Personal Competente":
           return <FcConferenceCall key={description} className={classVar} />;
-          break;
         case "Configuración iCalidad":
           return <AiFillSetting key={description} className={classVar} />;
-          break;
         default:
           <FcAnswers key={description} className={classVar} />;
           break;
@@ -67,6 +77,7 @@ export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu
     
     function modifyMenuDataMenu(e,idMenuSelected, idMenuFather, urlMenu) {
       e.preventDefault();
+
       //alert(urlMenu);
       const idiCalidad = 23;
        setDataMenu({
@@ -82,8 +93,14 @@ export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu
        
      }
 
+     const [isOpen, toggleOpen] = useCycle(false, true);
+     console.log(isOpen);
+     //const containerRef = useRef(null);
+     //const { height } = useWindowSize();
+
     return (
       <>
+        <MenuToggle toggle={() => toggleOpen()} />
         <div className="my-2 border-b border-gray-100 w-full">
           <div
             onClick={(e) => modifyMenuDataMenu(e,idMenuSelected, idMenuFather, urlMenu)}
@@ -103,6 +120,7 @@ export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu
 
   function SideNavBar({ idUser }) {
     const { menuDataMenu, setDataMenu } = useContext(IcalidadContext);
+    setDataMenu(0);
     const idiCalidad = 23; // Se utiliza fijo para el menú del iCalidad ver. 2023 Q1
     const { data, error } = useSWR(
       `/api/User/dasBoardUser/${idUser}/${idiCalidad}/${menuDataMenu.idMenuFather}`
@@ -120,7 +138,7 @@ export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu
         <div className="mt-16 flex-col  border-r border-gray-100 shadow-md shadow-slate-500  rounded-tr-lg rounded-br-lg  ">
           {data.recordset.map((item) => (
             <div key={item.IdMenu} className=" m-3 mt-4 " >
-                <ElementMenu description={item.Menu} idMenuSelected={item.IdMenu} idMenuFather={item.IdMenuPadre} urlMenu={item.URL} IdUser={idUser} />
+                <ElementMenu0 description={item.Menu} idMenuSelected={item.IdMenu} idMenuFather={item.IdMenuPadre} urlMenu={item.URL} IdUser={idUser} />
             </div>
           ))}
         </div>
@@ -131,7 +149,7 @@ export function ElementMenu({ description, idMenuSelected, idMenuFather, urlMenu
 
 export default SideNavBar;
 
-
+*/
 
 /*
 
