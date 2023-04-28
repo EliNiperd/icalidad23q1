@@ -13,7 +13,7 @@
         , "vars": "local"
         , "ignoreRestSiblings": true
         , "caughtErrors": "none" }]
-    ,"react/no-unknown-property": ["error",{
+        ,"react/no-unknown-property": ["error",{
            "ignoreRestSiblings": true
             , "caughtErrors": "none"
             , "ignore": [
