@@ -1,4 +1,4 @@
-import { XIcon } from "@heroicons/react/solid"
+import { IoCloseSharp } from "react-icons/io5";
 const RecoverpassModal = ({ children, estado, cambiarEstado, titulo }) => {
 
   return (
@@ -14,7 +14,7 @@ const RecoverpassModal = ({ children, estado, cambiarEstado, titulo }) => {
               </div>
               <div className="absolute top-4 right-4 w-6 h-6 border-none bg-none rounded-sm cursor-pointer">
                 <button type="button" className='' onClick={() => cambiarEstado(!estado)}>
-                  <XIcon className="h-5 w-5 text-blue-500" />
+                <IoCloseSharp className="text-3xl text-accent hover:cursor-pointer"   ></IoCloseSharp>
                 </button>
               </div>
               {children}
