@@ -1035,10 +1035,11 @@ module.exports = {
           success: "#63B286", // success 400 tailwind
           warning: "#FED07A", // warning 500 tailwind
           error: "#D8464D", // error 400 tailwind
+         
         },
       },
     ],
   },
 //, require("tw-elements")
-  plugins: [require("daisyui"), require("tw-elements/dist/plugin")],
+  plugins: [require("daisyui"), require('tailwindcss-animated'), require("tw-elements/dist/plugin")],
 };

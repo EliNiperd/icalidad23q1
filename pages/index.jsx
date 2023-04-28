@@ -4,7 +4,8 @@ import Image from "next/image";
 import LINK from "next/link";
 
 //import { useForm } from "react-hook-form";
-import { Formik, ErrorMessage  } from 'formik';
+import { Formik, ErrorMessage, Form, Field  } from 'formik';
+import * as Yup from 'yup';
 
 import { useState, useCallback } from "react";
 import { useRouter } from "next/router";
@@ -13,7 +14,7 @@ import Loginimage from "../public/login_Secure.svg";
 import LogoNiperd from "../public/logoNiperd_image.png";
 
 import RecoverpassModal from "./RecoverPass/RecoverpassModal";
-import Alert from "./Components/BasicAlert";
+import Alert from "./Components/Alert";
 
 
 //import {  Validador } from "./Components/BasicAlert";
@@ -79,9 +80,9 @@ export default function Home() {
 
    const [showAlert, setShowAlert] = useState(false);
 
-  //  const handleShowAlert = () => {
-  //   setShowAlert(true);
-  //  };
+   const handleShowAlert = () => {
+    setShowAlert(true);
+   };
 
    const handleCloseAlert = () => {
     setShowAlert(false);
@@ -104,97 +105,114 @@ export default function Home() {
           <div className=" flex h-full self-center  ">
             <Formik 
               initialValues={{ email: '', password: '', error: '' }}
-              validate={values => {
-                const errors={};
-                if (!values.email){
-                  errors.email = 'Favor de teclear tu usuario.';
-                } 
-                if(!values.password){
-                  errors.password = 'Favor de teclear tu contraseña.'
-                }
-                return errors;
-              }}
-             onSubmit={ async  (values, { setSubmitting }) => {
+              validationSchema={Yup.object().shape({
+                email: Yup.string()
+                  .required('Favor de teclear tu usuario.')
+                  .min(3, 'El usuario debe tener al menos 3 caracteres.'),
+                password: Yup.string()
+                  .required('Favor de teclear tu contraseña.')
+                  .min(3, 'La contraseña debe tener al menos 3 caracteres.'),
+              })}
+              onSubmit={ async  (values, { setSubmitting, setStatus }) => {
+                  const result = await signIn("credentials", {
+                    email: values.email,
+                    password: values.password,
+                    redirect: false,
+                    callbackUrl: "/",
+                    //error: error,
+                  });
+                  //const { status, error } = result;
+                  console.log("result", result, "Final");
+                
+                  if (result?.error) {
+                    const { error } = result;
+                    //console.log(error);
+                    setStatus({ success: false, message: error });
+                    setSubmitting(false);
+                    //console.log("status", status, "success", success);
+                    //const {message, errormsj } = result.error; 
+                    //console.log("result.error: - ", message, " - messaje: ", errormsj);
+                    //const messageError = result.error;
+                    //errors.error = messageError;
+                    // Si hay un error, lo mostramos al usuario
+                    // <Alert
+                    //   position="top"
+                    //   duration={5000}
+                    //   onClose={handleCloseAlert}
+                    //   type='error'
+                    //   text={messageError}
+                    //   highlightedWords={['usuario', 'contraseña']}
+                    //    />
                   
-                const result = await signIn("credentials", {
-                  email: values.email,
-                  password: values.password,
-                  redirect: false,
-                  callbackUrl: "/",
-                });
-                //console.log("result", result);
-              
-                if (result?.error) {
-                  const messageError = result.error;
-                  errors.error = messageError;
-                  // Si hay un error, lo mostramos al usuario
-                  // <Alert
-                  //   position="top"
-                  //   duration={5000}
-                  //   onClose={handleCloseAlert}
-                  //   type='error'
-                  //   text={messageError}
-                  //   highlightedWords={['usuario', 'contraseña']}
-                  //    />
-                 
-                  //console.log("result.error: - ", messageError, " - showAlert: ", showAlert);
-                } else {
-                  // Si el inicio de sesión fue exitoso, redirigimos al usuario a la página de inicio
-                  router.push("/DashBoard");
-                }
-                errors.error = '';
-                  setSubmitting(false);
+                  
 
-               // }, 400);
-            }}
+                    //console.log("result.error: - ", messageError, " - showAlert: ", showAlert);
+                  } else {
+                    // Si el inicio de sesión fue exitoso, redirigimos al usuario a la página de inicio
+                    router.push("/DashBoard");
+                  }
+                  //errors.error = '';
+                   
+
+                    // const handleShowAlert = () => {
+                    //   setShowAlert(true);
+                    // }
+                  
+                    // const handleCloseAlert = () => {
+                    //   setShowAlert(false);
+                    // }
+
+                    setSubmitting(false);
+
+                // }, 400);
+              }}
             >
               {({
-                values,
-                errors,
-                touched,
-                handleChange,
-                handleBlur,
+                //values,
+                //errors,
+                // touched,
+                // handleChange,
+                // handleBlur,
                 handleSubmit,
-                //isSubmitting = false
+                isSubmitting,
+                //setStatus,
+                status,
+                msg = status?.message , 
+                handleCloseAlert,
+                //handleShowAlert
                 /* and other goodies */
             }) => (
-              <form  onSubmit={handleSubmit} className=" rounded-lg place-self-center border-4 p-6 
+              <Form  onSubmit={handleSubmit} className=" rounded-lg place-self-center border-4 p-6 
                 shadow-xl shadow-[48,169,238]" >
                   <h2 className="text-4xl font-bold text-left  ">
                     Iniciar sesión en iCalidad
                   </h2>
                   <div className="flex flex-col font-bold py-2">
-                    
                     <label>Usuario</label>
-                    <input className="peer mt-0 block w-full px-0.5, px-0.5 py-2 pl-2
+                    <Field className="peer mt-0 block w-full px-0.5, px-0.5 py-2 pl-2
                                 outline-1 outline-gray-300  focus:outline-black rounded-md"
                       placeholder="johnD"
                       name="email"
                       autoComplete="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email}
                     />
-                    <div className="text-red-600 text-xs font-light">
-                      {errors.email && touched.email && errors.email}
+                    <div className="text-error text-xs ">
+                      <ErrorMessage name="email" >
+                        
+                      </ErrorMessage>
                     </div>
                   </div>
                   <div className="flex flex-col font-bold py-2">
                     <label>Contraseña</label>
-                    <input
+                    <Field
                       type="password"
                       className="peer mt-0 block w-full px-0.5, px-0.5 py-2 pl-2
                                 outline-1 outline-gray-300  focus:outline-black rounded-md"
                       placeholder="Ingresa tu contraseña"
                       name="password"
                       autoComplete="current-password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.password}
                     /> 
-                    <div className="text-red-600 text-xs font-light">
-                      {errors.password && touched.password && errors.password && errors.error}
-                      {/* <ErrorMessage component={errors.error} name="password" /> */}
+                    <div className="text-error text-xs ">
+                      <ErrorMessage name="password" />
                     </div>
                   </div>
                   <div className="flex justify-between text-gray-400 py-2">
@@ -211,8 +229,17 @@ export default function Home() {
                   </div>
                   <button type="submit"  className="w-full my-5 py-3 mt-3 bg-[#30a9ee] shadow-md shadow-[#30a9ee]/50 
                         hover:shadow-[#30a9ee]/50 hover:bg-[#30a9ee]/50 text-white font-semibold rounded-lg">
-                    Iniciar Sesión
+                     {isSubmitting ? 'Procesando...' : 'Iniciar Sesión'}
                   </button>
+                  {status && status.success === false && (
+                    
+                    <div>
+                    <Alert type="error" postion="top" text={msg} 
+                      duration={40000} 
+                      onClose={handleCloseAlert}
+                      highlightedWords={['error', 'Failed']}     />
+                    </div>
+                  )}
                   <div className="flex justify-between text-gray-400 py-2">
                     <label>
                       ¿No cuentas con una cuenta?{" "}
@@ -220,7 +247,8 @@ export default function Home() {
                     </label>
                   </div>
                   <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-              </form>
+                 
+              </Form>
             )}
           </Formik>
         </div>

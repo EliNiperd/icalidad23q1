@@ -53,12 +53,10 @@ export default NextAuth({
               error: null,}
             }*/
           } else
-            throw new Error(
-              JSON.stringify({message: "Por favor, verifica tu usuario o contraseña"})
-            );
+            throw new Error("Por favor, verifica tu usuario o contraseña");
         } catch (error) {
             //console.log(error);
-            throw new Error(JSON.stringify({message: "Existe un error al intentar validar tus credenciales: " + error.message }));
+            throw new Error( "Ocurrió un error: " + error.message );
           //return error;
         }
       },

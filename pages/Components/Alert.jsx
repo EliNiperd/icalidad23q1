@@ -1,32 +1,34 @@
 import { useEffect, useState } from 'react';
+import { IoCloseSharp } from "react-icons/io5";
 
 const Alert = ({ position, duration, onClose, type, text, highlightedWords }) => {
-const [visible, setVisible] = useState(true);
-    console.log( "Alert se ejecuta: ");
+
+    
+    //console.log( "Alert se ejecuta: type - ", type, " texto - ", text, " words - ", highlightedWords);
+    //Definir los estados de la alerta
+    const [visible, setVisible] = useState(true);
+
     useEffect(() => {
-        //Lógica para controlar que el tiempo de duración del alerta sea el correcto y el devanecimiento 
         const timeout = setTimeout(() => {
-            setVisible(false); // ocultar la alerta cuando el tiempo de duración se acaba
-            console.log( "useEffect se ejecuta: ");
+        setVisible(false); // Ocultar la alerta después de la duración especificada
         }, duration);
 
-        return () =>{
-            clearTimeout(timeout); //Limpia el timeout para que no se acumulen
+        return () => {
+        clearTimeout(timeout);
         };
-    }, []);
+    }, [duration]);
 
+  const handleClose = () => {
+    setVisible(false); // Ocultar la alerta cuando el usuario cierre manualmente
+    () => onClose
+  };
 
-    const handleClose = () => {
-        setVisible(false); // ocultar la alerta cuando el usuario cierre la alerta
-        onClose();
-    };
-
-    let alertClasses  = 'alert';
+    const alertClasses = "alert alert-" + type + " rounded-lg text-xs animate-normal open:animate-fade-down open:animate-ease-out animate-fade-up animate-ease-in";
    
-    if(position){
-        alertClasses += ` alert-${position}`;
-    }
-
+    // if(position){
+    //     alertClasses += ` alert-${position}`;
+    // }
+//console.log("visble: ", visible, "alertClasses: ", alertClasses, "type: ", type, "text: ", text, "highlightedWords: ", highlightedWords, "duration: ", duration, "onClose: ", onClose, "position: ", position, "successText: ", "infoText: ", "warningText:)");
     if(!visible){
         return null; //No renderiza la alert si no es visible
     }
@@ -36,40 +38,28 @@ const [visible, setVisible] = useState(true);
         case 'error':
             alertContent = (
               <div className={alertClasses}>
-                <div className="flex flex-row items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="stroke-current flex-shrink-0 h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                <div className="flex flex-row p-0 items-center ">
+                    <div onClick={handleClose} className='self-start place-self-end' >
+                        <IoCloseSharp className="text-sm  ring-white ring-1 ring-offset-1 rounded-full text-white hover:cursor-pointer "  ></IoCloseSharp>
+                    </div>
                   <span>
-                    {highlightedWords && highlightedWords.length > 0 ? (
-                      // Resaltar las palabras que coincidan con el texto de la alerta
-                      text.split(" ").map((word, index) =>
-                        highlightedWords.includes(word) ? (
-                          <span key={index} className="highlighted">
+                   {highlightedWords && highlightedWords.length > 0 ? (
+                        // Resaltar las palabras que coincidan con el texto de la alerta
+                        text.split(" ").map((word, index) =>
+                        highlightedWords.includes(word + ' ') ? (
+                            <span key={index} className="font-bold">
                             {word}
-                          </span>
+                            </span>
                         ) : (
-                          <span key={index}>{word}</span>
+                            <span key={index}>{word + ' '}</span>
                         )
-                      )
-                    ) : (
-                      <span>{text}</span>
-                    )}
+                        )
+                        ) : (
+                        <span>{text}</span>
+                        )}
                   </span>
                 </div>
-                <button className="close" onClick={handleClose}>
-                  Cerrar
-                </button>
+                
               </div>
             );
             break;
@@ -161,14 +151,13 @@ const [visible, setVisible] = useState(true);
                             />
                         </svg>
                     </div>
-                    <div className="text-sm font-medium text-red-500">{errorText}</div>
+                    <div className="text-sm font-medium text-red-500"><span>
+                   Prueba
+                  </span></div>
                 </div>
             );
             break;
         }
-
-                                
-                            
 
 
   return (
