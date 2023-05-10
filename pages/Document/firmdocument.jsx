@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const firmdocument = () => {
-  return (
-    <div>firmdocument</div>
-  )
-}
+  return <div>firmdocument</div>;
+};
 
-export default firmdocument
+export default firmdocument;

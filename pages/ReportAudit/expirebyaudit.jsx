@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const expirebyaudit = () => {
-  return (
-    <div>expirebyaudit</div>
-  )
-}
+  return <div>expirebyaudit</div>;
+};
 
-export default expirebyaudit
+export default expirebyaudit;

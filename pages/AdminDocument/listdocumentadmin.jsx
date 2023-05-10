@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const listdocumentadmin = () => {
-  return (
-    <div>listdocumentadmin</div>
-  )
-}
+  return <div>listdocumentadmin</div>;
+};
 
-export default listdocumentadmin
+export default listdocumentadmin;

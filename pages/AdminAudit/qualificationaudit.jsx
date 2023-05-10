@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const qualificationaudit = () => {
-  return (
-    <div>qualificationaudit</div>
-  )
-}
+  return <div>qualificationaudit</div>;
+};
 
-export default qualificationaudit
+export default qualificationaudit;

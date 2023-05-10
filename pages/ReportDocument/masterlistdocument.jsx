@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const masterlistdocument = () => {
-  return (
-    <div>masterlistdocument</div>
-  )
-}
+  return <div>masterlistdocument</div>;
+};
 
-export default masterlistdocument
+export default masterlistdocument;

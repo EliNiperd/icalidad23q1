@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const diagrampareto = () => {
-  return (
-    <div>diagrampareto</div>
-  )
-}
+  return <div>diagrampareto</div>;
+};
 
-export default diagrampareto
+export default diagrampareto;

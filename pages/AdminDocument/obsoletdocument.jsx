@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const obsoletdocument = () => {
-  return (
-    <div>obsoletdocument</div>
-  )
-}
+  return <div>obsoletdocument</div>;
+};
 
-export default obsoletdocument
+export default obsoletdocument;

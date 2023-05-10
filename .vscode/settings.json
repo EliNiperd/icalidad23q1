@@ -1,3 +1,4 @@
 {
-    "gitlens.statusBar.enabled": true
+  "gitlens.statusBar.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

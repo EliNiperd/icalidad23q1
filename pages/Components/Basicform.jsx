@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Basicform = () => {
-  return (
-    <div>Basicform</div>
-  )
-}
+  return <div>Basicform</div>;
+};
 
-export default Basicform
+export default Basicform;

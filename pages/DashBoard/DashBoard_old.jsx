@@ -1,11 +1,11 @@
-import Head from "next/head";
-import Link from "next/link";
-//import { useEffect, useState } from "react";
-import { useSession, getSession } from "next-auth/react";
-//import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import Link from 'next/link';
+// import { useEffect, useState } from "react";
+import { useSession, getSession } from 'next-auth/react';
+// import styles from "../styles/Home.module.css";
 
 const DashBoard_old = () => {
-  /*const [user, setUser] = useState(null);
+  /* const [user, setUser] = useState(null);
 
   useEffect(() => {
     axios
@@ -27,28 +27,28 @@ const DashBoard_old = () => {
       });
   }, []);
 */
-  //console.log(user);
-  const {session} = useSession();
+  // console.log(user);
+  const { session } = useSession();
 
-  //console.log(data);
+  // console.log(data);
 
   return (
-    <div className='container'>
+    <div className="container">
       <Head>
         <title>Home Page</title>
       </Head>
       {session ? user({ session }) : guest()}
     </div>
   );
-}
+};
 
-//Guest
+// Guest
 function guest() {
   return (
     <main className="container mx-auto text-center py-20">
       <h3 className="text-4xl font-bold">Guest Homepage</h3>
       <div className="flex justify-center">
-        <Link href={"/login"}>
+        <Link href={'/login'}>
           <a className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray-50">
             Signing
           </a>
@@ -58,7 +58,7 @@ function guest() {
   );
 }
 
-//Autorize User
+// Autorize User
 function user({ data }) {
   return (
     <main className="container mx-auto text-center py-20">
@@ -75,7 +75,7 @@ function user({ data }) {
       </div>
 
       <div className="flex justify-center">
-        <Link href={"/profile"}>
+        <Link href={'/profile'}>
           <a className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray-50">
             Profile Page
           </a>
@@ -85,12 +85,11 @@ function user({ data }) {
   );
 }
 
-
 /*
   if (!user)
     return (
       <div>
-       
+
       </div>
     );
 
@@ -115,13 +114,13 @@ function user({ data }) {
   );
 };
 */
-export async function getServerSideProps({ req }){
+export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
   console.log('session', session);
   if (!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: '/',
         permanent: false,
       },
     };
@@ -132,6 +131,5 @@ export async function getServerSideProps({ req }){
     },
   };
 }
-
 
 export default DashBoard_old;
