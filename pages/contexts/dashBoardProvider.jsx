@@ -12,16 +12,18 @@ const initialState = {
 }
 */
 
-export const DashBoardProvider = ( { children } ) => {
-    //setActiveMenu(true)
-    const [activeMenu, setActiveMenu] = useState(true)
-    const [idMenuFather, setIdMenuFather] = useState(1)
+export const DashBoardProvider = ({ children }) => {
+  //setActiveMenu(true)
+  const [activeMenu, setActiveMenu] = useState(true);
+  const [idMenuFather, setIdMenuFather] = useState(1);
 
-    return (
-        <DashBoardContext.Provider value={{ activeMenu, idMenuFather, setIdMenuFather, setActiveMenu }} >
-            { children }
-        </DashBoardContext.Provider>
-    );
+  return (
+    <DashBoardContext.Provider
+      value={{ activeMenu, idMenuFather, setIdMenuFather, setActiveMenu }}
+    >
+      {children}
+    </DashBoardContext.Provider>
+  );
 };
 
 export default DashBoardProvider;

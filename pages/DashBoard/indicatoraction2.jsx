@@ -1,9 +1,5 @@
-import React from 'react'
-
 const indicatoraction2 = () => {
-  return (
-    <div>indicatoraction2</div>
-  )
-}
+  return <div>indicatoraction2</div>;
+};
 
-export default indicatoraction2
+export default indicatoraction2;

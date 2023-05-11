@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const analysisaction = () => {
-  return (
-    <div>analysisaction</div>
-  )
-}
+  return <div>analysisaction</div>;
+};
 
-export default analysisaction
+export default analysisaction;

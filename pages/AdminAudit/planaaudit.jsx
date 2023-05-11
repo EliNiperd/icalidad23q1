@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const planaaudit = () => {
-  return (
-    <div>planaaudit</div>
-  )
-}
+  return <div>planaaudit</div>;
+};
 
-export default planaaudit
+export default planaaudit;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const listauditorys = () => {
-  return (
-    <div>listauditorys</div>
-  )
-}
+  return <div>listauditorys</div>;
+};
 
-export default listauditorys
+export default listauditorys;

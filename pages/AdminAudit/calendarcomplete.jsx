@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const calendarcomplete = () => {
-  return (
-    <div>calendarcomplete</div>
-  )
-}
+  return <div>calendarcomplete</div>;
+};
 
-export default calendarcomplete
+export default calendarcomplete;

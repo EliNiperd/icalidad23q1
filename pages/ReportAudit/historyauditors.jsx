@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const historyauditors = () => {
-  return (
-    <div>historyauditors</div>
-  )
-}
+  return <div>historyauditors</div>;
+};
 
-export default historyauditors
+export default historyauditors;

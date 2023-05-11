@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const charpetdocument = () => {
-  return (
-    <div>charpetdocument</div>
-  )
-}
+  return <div>charpetdocument</div>;
+};
 
-export default charpetdocument
+export default charpetdocument;
