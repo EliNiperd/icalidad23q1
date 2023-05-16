@@ -7,8 +7,8 @@ details[open] > .hidden {
   opacity: 0;
 }
 
-@apply (grid-Template-Columns):{
-        '16': 'repeat(16, minmax(0,1fr))',
+@apply (grid-Template-Columns): {
+  '16':'repeat(16,minmax(0,1fr))', ;
 }
 
 /**

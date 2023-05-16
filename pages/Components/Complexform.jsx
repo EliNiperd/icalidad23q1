@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Complexform = () => {
-  return (
-    <div>Complexform</div>
-  )
-}
+  return <div>Complexform</div>;
+};
 
-export default Complexform
+export default Complexform;

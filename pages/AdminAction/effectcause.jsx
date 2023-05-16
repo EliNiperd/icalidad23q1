@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const effectcause = () => {
-  return (
-    <div>effectcause</div>
-  )
-}
+  return <div>effectcause</div>;
+};
 
-export default effectcause
+export default effectcause;

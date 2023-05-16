@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const simplegrid = () => {
-  return (
-    <div>simplegrid</div>
-  )
-}
+  return <div>simplegrid</div>;
+};
 
-export default simplegrid
+export default simplegrid;

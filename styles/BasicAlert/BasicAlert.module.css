@@ -1,15 +1,14 @@
 .alertSlideIn {
-    /*animation: 3s infinite alternate slidein;*/
-    animation-duration: 3s;
-    animation-name: slidein;
-    animation-iteration-count: 1;
-    
-    
-   /* //bg-red-100;
+  /*animation: 3s infinite alternate slidein;*/
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: 1;
+
+  /* //bg-red-100;
     //rounded-lg;
     //x-show: isOpen;
 */
-    /*transition-name: slidein;
+  /*transition-name: slidein;
     transition-duration: 5s;
     transition:enter-start="opacity-0 scale-95";
     x-transition:enter-end="opacity-100 scale-100";

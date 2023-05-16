@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const protectdocument = () => {
-  return (
-    <div>protectdocument</div>
-  )
-}
+  return <div>protectdocument</div>;
+};
 
-export default protectdocument
+export default protectdocument;

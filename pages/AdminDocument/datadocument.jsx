@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const datadocument = () => {
-  return (
-    <div>datadocument</div>
-  )
-}
+  return <div>datadocument</div>;
+};
 
-export default datadocument
+export default datadocument;

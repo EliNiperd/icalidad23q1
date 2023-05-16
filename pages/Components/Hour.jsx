@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Hour = () => {
-  return (
-    <div>Hour</div>
-  )
-}
+  return <div>Hour</div>;
+};
 
-export default Hour
+export default Hour;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const ConsultDocument = () => {
-  return (
-    <div>ConsultDocument</div>
-  )
-}
+  return <div>ConsultDocument</div>;
+};
 
-export default ConsultDocument
+export default ConsultDocument;
