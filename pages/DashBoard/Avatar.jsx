@@ -1,19 +1,24 @@
-import Image from 'next/image'
-import avatarImage from '../../public/photo-Avatar1.jpg'
+import Image from 'next/image';
+import avatarImage from '../../public/photo-Avatar1.jpg';
 
 const Avatar = ({ userImage }) => {
   return (
     <>
-   <div className="avatar online relative">
-    <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
-      <Image src={avatarImage}  alt='Avatar' className='rounded-full' layout='fill' ></Image>
-    </div>
-  </div>
-  </>
-  )
-}
+      <div className="avatar online relative">
+        <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
+          <Image
+            src={avatarImage}
+            alt="Avatar"
+            className="rounded-full"
+            layout="fill"
+          ></Image>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default Avatar
+export default Avatar;
 
 // .color1 { #34acec };
 // .color2 { #99d4f4 };

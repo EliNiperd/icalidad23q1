@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const routesdocument = () => {
-  return (
-    <div>routesdocument</div>
-  )
-}
+  return <div>routesdocument</div>;
+};
 
-export default routesdocument
+export default routesdocument;

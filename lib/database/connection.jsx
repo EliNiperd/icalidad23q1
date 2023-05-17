@@ -1,4 +1,4 @@
-import msql from "mssql";
+import msql from 'mssql';
 
 /*global Map*/
 const pools = new Map();
@@ -26,7 +26,7 @@ export const usegetPool = async (name) => {
 
   if (!pools.has(name)) {
     if (!dbSettings) {
-      throw new Error("Pool does not exists");
+      throw new Error('Pool does not exists');
     }
     const pool = new msql.ConnectionPool(dbSettings);
 
@@ -57,11 +57,10 @@ export const connectDB = async () => {
   }
 };
 
-export const typeParameter = async () =>{
-  const types =  msql.TYPES
-  return types
-}
-
+export const typeParameter = async () => {
+  const types = msql.TYPES;
+  return types;
+};
 
 export default usegetPool;
 

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const activity = () => {
-  return (
-    <div>activity</div>
-  )
-}
+  return <div>activity</div>;
+};
 
-export default activity
+export default activity;

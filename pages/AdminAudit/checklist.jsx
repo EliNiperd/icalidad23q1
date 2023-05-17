@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const checklist = () => {
-  return (
-    <div>checklist</div>
-  )
-}
+  return <div>checklist</div>;
+};
 
-export default checklist
+export default checklist;

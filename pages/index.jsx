@@ -1,28 +1,34 @@
-import { signIn, csrfToken } from "next-auth/react";
-//, getCsrfToken, getSession, useSession
-import Image from "next/image";
-import LINK from "next/link";
+import { useState, useCallback } from 'react';
+import { useRouter } from 'next/router';
 
-//import { useForm } from "react-hook-form";
-import { Formik, ErrorMessage, Form, Field  } from 'formik';
+import Image from 'next/image';
+
+import Loginimage from '../public/login_Secure.svg';
+import LogoNiperd from '../public/logoNiperd_image.png';
+
+import { signIn, csrfToken, getSession } from 'next-auth/react';
+//, getCsrfToken, getSession, useSession
+// import Image from 'next/image';
+import LINK from 'next/link';
+
+// import { useForm } from "react-hook-form";
+import { Formik, ErrorMessage, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-import { useState, useCallback } from "react";
-import { useRouter } from "next/router";
+// import { LogoNiperd } from '../public/logoNiperd_image.png';
 
-import Loginimage from "../public/login_Secure.svg";
-import LogoNiperd from "../public/logoNiperd_image.png";
+import { IoCheckmarkCircle } from 'react-icons/io5';
 
-import RecoverpassModal from "./RecoverPass/RecoverpassModal";
-import Alert from "./Components/Alert";
+import RecoverpassModal from './RecoverPass/RecoverpassModal';
+import Alert from './Components/Alert';
+// import { object } from 'node_modules/yup/index';
 
+// import {  Validador } from "./Components/BasicAlert";
 
-//import {  Validador } from "./Components/BasicAlert";
+/// /"dev": "next-dev-https --https --qr ",
 
-////"dev": "next-dev-https --https --qr ",
-
-//import DetailUser from './DashBoard/DetailUser';
-//import useSWR from 'swr';
+// import DetailUser from './DashBoard/DetailUser';
+// import useSWR from 'swr';
 
 // Hook
 // Parameter is the boolean, with default "false" value
@@ -38,72 +44,36 @@ const useToggle = (initialState = false) => {
 };
 
 export default function Home() {
-
-
-  //const { data, status } = useSession;
-  /*const { register, handleSubmit } = useForm({
+  // const { data, status } = useSession;
+  /* const { register, handleSubmit } = useForm({
     mode: "onBlur",
-  });*/
+  }); */
+
   const router = useRouter();
   const [estadomodal, setEstadomodal] = useToggle();
 
   // Call the hook which returns, current value and the toggler function
   const [alert, setAlert] = useToggle();
- 
-  const titleModal = "Recuperar Contraseña";
 
-  //console.log('data', data, 'status', status);
-
-/*
-   async (data, event) => {
-     //console.log('data', data);
-     event.preventDefault();
-     console.log("event", event);
-
-     try {
-       const status = await signIn("credentials", {
-         email: data.email,
-         password: data.password,
-         redirect: false,
-         callbackUrl: "/",
-         error: error,
-         status: data.status,
-       });
-       console.log(status);
-       //if (status === 200) router.push("/DashBoard");
-       console.log("status", status, "error", error);
-     } catch (error) {
-       console.log(error);
-     }
-   };
-*/
-
-   const [showAlert, setShowAlert] = useState(false);
-
-   const handleShowAlert = () => {
-    setShowAlert(true);
-   };
-
-   const handleCloseAlert = () => {
-    setShowAlert(false);
-    };
+  const titleModal = 'Recuperar Contraseña';
 
   return (
-    <>
-    
+    <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full ">
         <div className=" flex flex-col px-8 bg-white   ">
           <div className="flex items-stretch  ">
             <div className="flex w-10 text-[102,102,102]  relative top-1">
               <Image className=" " src={LogoNiperd} alt="Logo Niperd" />
             </div>
-            <div className="text-2xl text-[102,102,102]  tracking-wide ml-2 font-semibold  
-                   self-center " >
+            <div
+              className="text-2xl text-[102,102,102]  tracking-wide ml-2 font-semibold
+                   self-center "
+            >
               NIPERD
             </div>
           </div>
           <div className=" flex h-full self-center  ">
-            <Formik 
+            <Formik
               initialValues={{ email: '', password: '', error: '' }}
               validationSchema={Yup.object().shape({
                 email: Yup.string()
@@ -113,92 +83,57 @@ export default function Home() {
                   .required('Favor de teclear tu contraseña.')
                   .min(3, 'La contraseña debe tener al menos 3 caracteres.'),
               })}
-              onSubmit={ async  (values, { setSubmitting, setStatus }) => {
-                  const result = await signIn("credentials", {
-                    email: values.email,
-                    password: values.password,
-                    redirect: false,
-                    callbackUrl: "/",
-                    //error: error,
-                  });
-                  //const { status, error } = result;
-                  console.log("result", result, "Final");
-                
-                  if (result?.error) {
-                    const { error } = result;
-                    //console.log(error);
-                    setStatus({ success: false, message: error });
-                    setSubmitting(false);
-                    //console.log("status", status, "success", success);
-                    //const {message, errormsj } = result.error; 
-                    //console.log("result.error: - ", message, " - messaje: ", errormsj);
-                    //const messageError = result.error;
-                    //errors.error = messageError;
-                    // Si hay un error, lo mostramos al usuario
-                    // <Alert
-                    //   position="top"
-                    //   duration={5000}
-                    //   onClose={handleCloseAlert}
-                    //   type='error'
-                    //   text={messageError}
-                    //   highlightedWords={['usuario', 'contraseña']}
-                    //    />
-                  
-                  
+              onSubmit={async (values, { setSubmitting, setStatus }) => {
+                const result = await signIn('credentials', {
+                  email: values.email,
+                  password: values.password,
+                  redirect: false,
+                  callbackUrl: '/',
+                  error: values.error,
+                  user: values.user,
+                });
 
-                    //console.log("result.error: - ", messageError, " - showAlert: ", showAlert);
-                  } else {
-                    // Si el inicio de sesión fue exitoso, redirigimos al usuario a la página de inicio
-                    router.push("/DashBoard");
+                if (result?.error) {
+                  const { error } = result;
+                  // console.log(error);
+                  setStatus({ success: false, message: error });
+                  setSubmitting(false);
+                } else {
+                  const session = await getSession();
+                  if (session?.user) {
+                    router.push('/DashBoard');
                   }
-                  //errors.error = '';
-                   
+                }
 
-                    // const handleShowAlert = () => {
-                    //   setShowAlert(true);
-                    // }
-                  
-                    // const handleCloseAlert = () => {
-                    //   setShowAlert(false);
-                    // }
-
-                    setSubmitting(false);
-
-                // }, 400);
+                setSubmitting(false);
               }}
             >
               {({
-                //values,
-                //errors,
-                // touched,
-                // handleChange,
-                // handleBlur,
                 handleSubmit,
                 isSubmitting,
-                //setStatus,
                 status,
-                msg = status?.message , 
+                msg = status?.message,
                 handleCloseAlert,
-                //handleShowAlert
-                /* and other goodies */
-            }) => (
-              <Form  onSubmit={handleSubmit} className=" rounded-lg place-self-center border-4 p-6 
-                shadow-xl shadow-[48,169,238]" >
+              }) => (
+                <Form
+                  onSubmit={handleSubmit}
+                  className=" rounded-lg place-self-center border-4 p-6
+                shadow-xl shadow-[48,169,238]"
+                >
                   <h2 className="text-4xl font-bold text-left  ">
                     Iniciar sesión en iCalidad
                   </h2>
                   <div className="flex flex-col font-bold py-2">
                     <label>Usuario</label>
-                    <Field className="peer mt-0 block w-full px-0.5, px-0.5 py-2 pl-2
+                    <Field
+                      className="peer mt-0 block w-full px-0.5, px-0.5 py-2 pl-2
                                 outline-1 outline-gray-300  focus:outline-black rounded-md"
                       placeholder="johnD"
                       name="email"
                       autoComplete="email"
                     />
                     <div className="text-error text-xs ">
-                      <ErrorMessage name="email" >
-                        
-                      </ErrorMessage>
+                      <ErrorMessage name="email"></ErrorMessage>
                     </div>
                   </div>
                   <div className="flex flex-col font-bold py-2">
@@ -210,71 +145,91 @@ export default function Home() {
                       placeholder="Ingresa tu contraseña"
                       name="password"
                       autoComplete="current-password"
-                    /> 
+                    />
                     <div className="text-error text-xs ">
                       <ErrorMessage name="password" />
                     </div>
                   </div>
                   <div className="flex justify-between text-gray-400 py-2">
                     <p className="flex items-center">
-                      <input className="mr-2" type="checkbox" id="remember" name="remember" />
+                      <input
+                        className="mr-2"
+                        type="checkbox"
+                        id="remember"
+                        name="remember"
+                      />
                       Recordarme
                     </p>
                     <p>
-                    {" "}
-                    <button type="button" onClick={() => setEstadomodal(!estadomodal)} >
+                      {' '}
+                      <button
+                        type="button"
+                        onClick={() => setEstadomodal(!estadomodal)}
+                      >
                         olvidé mi contraseña
-                    </button>{" "}
+                      </button>{' '}
                     </p>
                   </div>
-                  <button type="submit"  className="w-full my-5 py-3 mt-3 bg-[#30a9ee] shadow-md shadow-[#30a9ee]/50 
-                        hover:shadow-[#30a9ee]/50 hover:bg-[#30a9ee]/50 text-white font-semibold rounded-lg">
-                     {isSubmitting ? 'Procesando...' : 'Iniciar Sesión'}
+                  <button
+                    type="submit"
+                    className="w-full my-5 py-3 mt-3 bg-[#30a9ee] shadow-md shadow-[#30a9ee]/50
+                        hover:shadow-[#30a9ee]/50 hover:bg-[#30a9ee]/50 text-white font-semibold rounded-lg"
+                  >
+                    {isSubmitting ? 'Procesando...' : 'Iniciar Sesión'}
                   </button>
                   {status && status.success === false && (
-                    
                     <div>
-                    <Alert type="error" postion="top" text={msg} 
-                      duration={40000} 
-                      onClose={handleCloseAlert}
-                      highlightedWords={['error', 'Failed']}     />
+                      <Alert
+                        type="error"
+                        postion="top"
+                        text={msg}
+                        duration={40000}
+                        onClose={handleCloseAlert}
+                        highlightedWords={['error', 'Failed']}
+                      />
                     </div>
                   )}
                   <div className="flex justify-between text-gray-400 py-2">
                     <label>
-                      ¿No cuentas con una cuenta?{" "}
-                      <LINK href="/RegistroUser/registrouser">Regístrate aquí</LINK>
+                      ¿No cuentas con una cuenta?{' '}
+                      <LINK href="/RegistroUser/registrouser">
+                        Regístrate aquí
+                      </LINK>
                     </label>
                   </div>
-                  <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-                 
-              </Form>
-            )}
-          </Formik>
+                  <input
+                    name="csrfToken"
+                    type="hidden"
+                    defaultValue={csrfToken}
+                  />
+                </Form>
+              )}
+            </Formik>
+          </div>
         </div>
-      </div>
-      <div className="bg-sky-100 grid grid-cols-1 gap-2 grid-rows-1  w-full h-full  inset-y-0 right-0 ">
-        <div className="  object-center ">
-          <Image 
-            src={Loginimage}
-            layout="responsive"
-            priority={true}
-            alt="Login"
-          />
+        <div className="bg-sky-100 grid grid-cols-1 gap-2 grid-rows-1 w-full h-full inset-y-0 right-0">
+          <div className="  object-center ">
+            <Image
+              src={Loginimage}
+              layout="responsive"
+              priority={true}
+              alt="Login"
+            />
+          </div>
         </div>
-      </div>
       </div>
       <RecoverpassModal
         estado={estadomodal}
         cambiarEstado={setEstadomodal}
         titulo={titleModal}
       >
-        <form className="p-2 justify-between border-2 border-green-500" onSubmit={setAlert}>
+        <form
+          className="p-2 justify-between border-2 rounded-lg  shadow-xl shadow-[48,169,238] outline-1 outline-gray-500 "
+          onSubmit={setAlert}
+        >
           <p className="text-xs text-justify">
-            Completa la información, las instrucciones serán enviadas a tu
-            correo registrado.
+            por favor completa la información para recuperar tu contraseña.
           </p>
-          627
           <input
             type="text"
             className="mt-4 mb-4 block w-full px-0.5 border-0 border-b-2
@@ -285,44 +240,30 @@ export default function Home() {
           />
           <button
             type="submit"
-            className="w-full my-5 py-3 mt-3 bg-[#30a9ee] shadow-md shadow-[#30a9ee]/50 
+            className="w-full my-5 py-3 mt-3 bg-[#30a9ee] shadow-md shadow-[#30a9ee]/50
                    hover:shadow-[#30a9ee]/50 hover:bg-[#30a9ee]/50 text-white font-semibold rounded-lg "
           >
             Confirmar
           </button>
           {alert && (
             <div
-              className="bg-green-100 rounded-lg py-5 px-6 mb-3 
+              className="bg-green-100 rounded-lg py-5 px-6 mb-3
                         text-xs text-green-700 inline-flex items-center w-full"
               role="alert"
             >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="check-circle"
-                className="w-4 h-4 mr-2 fill-current"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                ></path>
-              </svg>
+              <IoCheckmarkCircle with="20" />
               Se envió el correo exitosamente
             </div>
           )}
         </form>
       </RecoverpassModal>
-    </>
+    </div>
   );
 }
 
 /*
 export  const getServerSideProps = async (context) => {
-  
+
   const session = await getSession(context);
 
   if (!session)
@@ -366,4 +307,4 @@ export async function getServerSideProps(context) {
       csrfToken: await getCsrfToken(context),
     },
   }
-}*/
+} */

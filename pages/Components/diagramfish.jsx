@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const diagramfish = () => {
-  return (
-    <div>diagramfish</div>
-  )
-}
+  return <div>diagramfish</div>;
+};
 
-export default diagramfish
+export default diagramfish;

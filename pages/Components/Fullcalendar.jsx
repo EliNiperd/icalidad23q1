@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Fullcalendar = () => {
-  return (
-    <div>Fullcalendar</div>
-  )
-}
+  return <div>Fullcalendar</div>;
+};
 
-export default Fullcalendar
+export default Fullcalendar;

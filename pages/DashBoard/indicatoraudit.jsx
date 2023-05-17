@@ -1,9 +1,5 @@
-import React from 'react'
-
 const indicatoraudit = () => {
-  return (
-    <div>indicatoraudit</div>
-  )
-}
+  return <div>indicatoraudit</div>;
+};
 
-export default indicatoraudit
+export default indicatoraudit;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Target = () => {
-  return (
-    <div>Target</div>
-  )
-}
+  return <div>Target</div>;
+};
 
-export default Target
+export default Target;

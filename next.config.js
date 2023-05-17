@@ -1,19 +1,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
 
-  reactStrictMode: true,
-  
   swcMinify: true,
   webpack: (config) => {
-    config.resolve.fallback = { dns: false, fs: false, path: false, stream: false
-      , constants: false, tls: false, net: false
-    , dgram: false };
-    
-    return config;
-   }
-}
+    config.resolve.fallback = {
+      dns: false,
+      fs: false,
+      path: false,
+      stream: false,
+      constants: false,
+      tls: false,
+      net: false,
+      dgram: false,
+    };
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;
 /*
 module.exports = {
   i18n: {
@@ -26,7 +32,7 @@ module.exports = {
 /*
 
   experimental: {
-    // this includes files from the monorepo base two directories up 
+    // this includes files from the monorepo base two directories up
      outputFileTracingRoot: path.join(__dirname, '../../'),
   },
 

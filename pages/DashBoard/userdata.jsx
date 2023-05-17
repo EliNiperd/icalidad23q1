@@ -1,9 +1,5 @@
-import React from 'react'
-
 const userdata = () => {
-  return (
-    <div>userdata</div>
-  )
-}
+  return <div>userdata</div>;
+};
 
-export default userdata
+export default userdata;

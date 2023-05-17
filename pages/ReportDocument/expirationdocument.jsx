@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const expirationdocument = () => {
-  return (
-    <div>expirationdocument</div>
-  )
-}
+  return <div>expirationdocument</div>;
+};
 
-export default expirationdocument
+export default expirationdocument;
