@@ -1,9 +1,5 @@
-import React from 'react'
-
 const messageuser = () => {
-  return (
-    <div>messageuser</div>
-  )
-}
+  return <div>messageuser</div>;
+};
 
-export default messageuser
+export default messageuser;

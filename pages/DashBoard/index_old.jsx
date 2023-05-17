@@ -1,19 +1,12 @@
-import React from 'react'
+const Index_Old = () => {
+  return <div>index_old</div>;
+};
 
-const index_old = () => {
-  return (
-    <div>index_old</div>
-  )
-}
-
-export default index_old
-
-
+export default Index_Old;
 
 /*
 import Head from "next/head";
 import Link from "next/link";
-
 
 //import { useRef, useState, useEffect } from "react";
 //import { useSession, getSession } from "next-auth/react";
@@ -44,8 +37,6 @@ const sidebar = {
     },
   },
 };
-
-
 
 export default function HomeDashBoard_Old({ children}) {
 //  const { data: session } = useSession();
@@ -89,7 +80,7 @@ function autorizeUser({children}) {
   //const [isOpen, toggleOpen] = useCycle(false, true);
   //const containerRef = useRef(null);
   //const { height } = useWindowSize();
- 
+
   return (
     <>
     <div className="grid grid-cols-8 grid-rows-12 gap-4">
@@ -114,12 +105,11 @@ function autorizeUser({children}) {
       <div className="row-start-3 col-start-1 col-span-8 w-auto max-h-screen bg-blue-300 border-2 border-blue-500">
             {children}
       </div>
-     
+
      </div>
     </>
   );
 }
-
 
 */
 

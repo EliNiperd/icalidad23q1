@@ -1,22 +1,22 @@
-import {  signIn, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import Head from "next/head";
-import Image from "next/image";
-//import { responseSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
-import styles from "../styles/Home.module.css";
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+// import { responseSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
+  const [userInfo, setUserInfo] = useState({ email: '', password: '' });
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-console.log('email: ', userInfo.email, 'password: ', userInfo.password)
+    console.log('email: ', userInfo.email, 'password: ', userInfo.password);
 
-    const res = await signIn("credentials", {
+    const res = await signIn('credentials', {
       email: userInfo.email,
       password: userInfo.password,
       redirect: false,
@@ -25,15 +25,16 @@ console.log('email: ', userInfo.email, 'password: ', userInfo.password)
     console.log('respuesta, sin hacer nada: ', res);
   };
 
-  console.log("session: ", session, "status: ", status);
+  console.log('session: ', session, 'status: ', status);
 
-  if (status === "authenticated")
-    router.push('/DashBoard')
-  
-  if (status === "loading") {
+  if (status === 'authenticated') {
+    router.push('/DashBoard');
+  }
+
+  if (status === 'loading') {
     <p>loading...</p>;
-  } else if (status === "unauthenticated") {
-      //router.push('/login')
+  } else if (status === 'unauthenticated') {
+    // router.push('/login')
     return (
       <div>
         <h1>No autenticado</h1>
@@ -66,7 +67,7 @@ console.log('email: ', userInfo.email, 'password: ', userInfo.password)
             </button>
           </span>
         </form>
-        </div>
+      </div>
     );
   } else {
     return (
@@ -88,7 +89,7 @@ console.log('email: ', userInfo.email, 'password: ', userInfo.password)
             <button
               className="button bg-green-600 p-2 m-2 text"
               onClick={() => {
-                router.push("/api/auth/signin");
+                router.push('/api/auth/signin');
               }}
             >
               Sign in
@@ -99,7 +100,7 @@ console.log('email: ', userInfo.email, 'password: ', userInfo.password)
           </h1>
 
           <p className={styles.description}>
-            Get started by editing{" "}
+            Get started by editing{' '}
             <code className={styles.code}>pages/index.js</code>
           </p>
 
@@ -140,7 +141,7 @@ console.log('email: ', userInfo.email, 'password: ', userInfo.password)
             target="_blank"
             rel="noopener noreferrer"
           >
-            Powered by{" "}
+            Powered by{' '}
             <span className={styles.logo}>
               <Image
                 src="/vercel.svg"
@@ -157,7 +158,7 @@ console.log('email: ', userInfo.email, 'password: ', userInfo.password)
 }
 /*
 export const getServerSideProps = async (context) => {
-  
+
   const session = await getSession(context)
 
   if(!session) return{

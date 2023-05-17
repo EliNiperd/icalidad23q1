@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const qualityregisterlist = () => {
-  return (
-    <div>qualityregisterlist</div>
-  )
-}
+  return <div>qualityregisterlist</div>;
+};
 
-export default qualityregisterlist
+export default qualityregisterlist;

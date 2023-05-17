@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 const Path = (props) => (
   <motion.path
@@ -10,8 +10,7 @@ const Path = (props) => (
   />
 );
 
-export  const MenuToggle = ({ toggle }) => (
-  
+export const MenuToggle = ({ toggle }) => (
   <>
     <button
       onClick={toggle}
@@ -20,8 +19,8 @@ export  const MenuToggle = ({ toggle }) => (
       <svg width="44" height="44" viewBox="0 0 44 44">
         <Path
           variants={{
-            closed: { d: "M 13 16 L 30 16" },
-            open: { d: "M 13 16 L 30 30" },
+            closed: { d: 'M 13 16 L 30 16' },
+            open: { d: 'M 13 16 L 30 30' },
           }}
         />
         <Path
@@ -34,18 +33,16 @@ export  const MenuToggle = ({ toggle }) => (
         />
         <Path
           variants={{
-            closed: { d: "M 13 30 L 30 30" },
-            open: { d: "M 13 30 L 30 16" },
+            closed: { d: 'M 13 30 L 30 30' },
+            open: { d: 'M 13 30 L 30 16' },
           }}
         />
       </svg>
     </button>
-   
   </>
 );
 
 export default MenuToggle;
-
 
 /*
  <motion.div className="absolute top-3 left-5 w-auto h-auto p-2 items-start rounded-md bg-[#DEF0FA] border-[#30A9ED] shadow-md shadow-slate-500"
@@ -68,14 +65,14 @@ export default MenuToggle;
     }}
     />
     <Path d="M 2 9.423 L 20 9.423"
-        variants={{ 
+        variants={{
             closed: { opacity: 1 },
             open: { opacity: 0 }
         }}
-        transition={{ duration: 0.1 }} 
+        transition={{ duration: 0.1 }}
     />
 </svg>
-</button>   
+</button>
 <svg viewBox="0 0 60 60">
     <circle cx="30" cy="30" r="20" />
       <Path d="m14,28 h32 " stroke='#ffffff' strokeWidth='.02em' strokeLinecap="round" fill="transparent"   />
