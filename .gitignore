@@ -41,3 +41,15 @@ yarn-error.log*
 # vercel
 .vercel
 
+# vscode
+.vscode/*
+
+# next.js
+.next/*
+
+# Excecution files in IIS Server
+Web.config
+server.js
+```
+
+

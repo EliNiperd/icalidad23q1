@@ -1,5 +1,3 @@
-import React from 'react';
-
 const qualityregisterlist = () => {
   return <div>qualityregisterlist</div>;
 };

@@ -1,4 +1,4 @@
-//import getPool from "../../database/connection"
+// import getPool from "../../database/connection"
 import sql from 'mssql';
 
 const dbSettings = {
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       .query('select * from Gen_TEmpleado ');
     res.status(200).json({ result });
 
-    //console.dir(result)
+    // console.dir(result)
   } catch (err) {
     res.status(500).json({ error: 'failed to load data' });
   }

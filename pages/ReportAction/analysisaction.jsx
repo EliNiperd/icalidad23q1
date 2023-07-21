@@ -1,5 +1,3 @@
-import React from 'react';
-
 const analysisaction = () => {
   return <div>analysisaction</div>;
 };

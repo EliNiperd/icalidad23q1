@@ -4,7 +4,7 @@ import { SessionProvider } from 'next-auth/react';
 import { SWRConfig } from 'swr';
 import { IcalidadProvider } from './contexts/IcalidadContext';
 import { ChakraProvider } from '@chakra-ui/react';
-
+/*
 export function reportWebVitals(metric) {
   switch (metric.name) {
     case 'FCP':
@@ -35,7 +35,7 @@ export function reportWebVitals(metric) {
       break;
   }
 }
-
+*/
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   //  mutate(key, data, options)
   // refreshInterval: 3000,

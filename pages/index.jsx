@@ -7,7 +7,7 @@ import Loginimage from '../public/login_Secure.svg';
 import LogoNiperd from '../public/logoNiperd_image.png';
 
 import { signIn, csrfToken, getSession } from 'next-auth/react';
-//, getCsrfToken, getSession, useSession
+// , getCsrfToken, getSession, useSession
 // import Image from 'next/image';
 import LINK from 'next/link';
 

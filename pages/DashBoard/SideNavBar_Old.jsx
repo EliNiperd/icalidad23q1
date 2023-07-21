@@ -1,8 +1,8 @@
-const SideNavBar_Old = () => {
+const SideNavBarOld = () => {
   return <div>SideNavBar_Old</div>;
 };
 
-export default SideNavBar_Old;
+export default SideNavBarOld;
 
 /* import { useRouter } from "next/router";
 import useSWR, { useSWRConfig } from "swr";

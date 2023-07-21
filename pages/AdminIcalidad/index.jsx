@@ -1,4 +1,4 @@
-//import HomeDashBoard from "../DashBoard";
+// import HomeDashBoard from "../DashBoard";
 import Prueba from '../DashBoard/Prueba';
 
 const AdminIcalidad = () => {

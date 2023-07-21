@@ -1,8 +1,8 @@
-const Index_Old = () => {
+const IndexOld = () => {
   return <div>index_old</div>;
 };
 
-export default Index_Old;
+export default IndexOld;
 
 /*
 import Head from "next/head";
