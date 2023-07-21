@@ -13,9 +13,9 @@ const initialState = {
 */
 
 export const DashBoardProvider = ({ children }) => {
-  //setActiveMenu(true)
+  // setActiveMenu(true)
   const [activeMenu, setActiveMenu] = useState(true);
-  const [idMenuFather, setIdMenuFather] = useState(1);
+  const [idMenuFather, setIdMenuFather] = useState(149);
 
   return (
     <DashBoardContext.Provider
@@ -28,4 +28,4 @@ export const DashBoardProvider = ({ children }) => {
 
 export default DashBoardProvider;
 
-//export const useStateContext = () => useContext(StateContext);
+// export const useStateContext = () => useContext(StateContext);

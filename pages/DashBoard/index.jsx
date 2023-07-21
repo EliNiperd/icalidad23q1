@@ -1,25 +1,28 @@
-import { useSession } from 'next-auth/react';
 import { useState } from 'react';
-// import { getServerSession } from "next-auth/next"
-// import { authOptions } from "../api/auth/[...nextauth]";
-// import Image from "next/image";
-// import menuIcon_01 from "./public/menuIcon_01.svg";
-// import Avatar from './Avatar';
-// import NavBar from './NavBar';
-// import SideNavBar from './SideNavBar';
-// import Search from "./Search";
+
 import { IoMenuSharp } from 'react-icons/io5';
+import SideNavBar from './SideNavBar';
+import Avatar from './Avatar';
+import Search from './Search';
+import { useContext, useEffect } from 'react';
+import { IcalidadContext } from '../contexts/IcalidadContext';
 
 const HomeDashBoard = ({ children }) => {
-  const { data: session } = useSession();
-  console.log('session: ', session);
-  const userId = session?.user?.id;
-  const userImage = session?.user?.image;
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMenuId, setActiveMenuId] = useState(null);
   const [contador, setContador] = useState(0);
 
+  const { menuDataMenu, setDataMenu } = useContext(IcalidadContext);
+  /*useEffect(() => {
+    if (menuDataMenu.idMenu === null || menuDataMenu.idMenu === 0) {
+      setDataMenu({
+        ...menuDataMenu,
+        idMenuFather: 149,
+        idMenu: 149,
+      });
+    }
+  }, []);
+*/
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setContador(contador + 1);
@@ -30,16 +33,6 @@ const HomeDashBoard = ({ children }) => {
     setActiveMenuId(null);
   };
 
-  const handleMenuItemClick = (menuId) => {
-    // closeMenu();
-    setActiveMenuId(menuId);
-  };
-
-  // const { data: session } = useSession();
-  // console.log(session?.user?.id);
-  // const [isOpen, toggleOpen] = useCycle(false, true);
-  // const containerRef = useRef(null);
-  //  const { height } = useWindowSize();
   return (
     <div className="flex flex-col h-screen ">
       <header className=" text-neutral-900 bg-neutral flex justify-between items-center shadow-lg rounded-br rounded-bl p-3">
@@ -48,9 +41,15 @@ const HomeDashBoard = ({ children }) => {
             className="hover:scale-125 basis-1/4 text-3xl hover:cursor-pointer peer"
             onClick={toggleMenu}
           />
-          <p>iCalidad</p>
+          <h1 className="pl-1 font-semibold text-xl">iCalidad</h1>
         </container>
-        <div className="w-max  "></div>
+        <container className="flex flex-row">
+          {' '}
+          <Search></Search>
+        </container>
+        <container className="w-max ">
+          <Avatar></Avatar>
+        </container>
       </header>
       <div className="flex flex-1 ">
         <div
@@ -58,8 +57,17 @@ const HomeDashBoard = ({ children }) => {
         transition-all duration-500 transform ${
           isMenuOpen ? '' : '-translate-x-full'
         }`}
-        ></div>
-        <div className="flex-1 ml-6 p-4   " onClick={closeMenu}>
+        >
+          <SideNavBar
+            activeMenuId={activeMenuId}
+            isMenuOpen={isMenuOpen}
+            menuId={activeMenuId}
+            onCloseMenu={closeMenu}
+            menuDataMenu={menuDataMenu}
+            setDataMenu={setDataMenu}
+          />
+        </div>
+        <div className="flex-1 ml-6 p-4 " onClick={closeMenu}>
           {children}
         </div>
       </div>
@@ -67,7 +75,12 @@ const HomeDashBoard = ({ children }) => {
   );
 };
 
+export default HomeDashBoard;
+
 /*
+
+
+
 export async function getServerSideProps({ context }) {
   const session = await getSession({ context });
   //console.log('session - : ', session);
@@ -86,7 +99,38 @@ export async function getServerSideProps({ context }) {
   };
 }
 */
-export default HomeDashBoard;
+
+/*
+
+  // const { data: session } = useSession();
+  // console.log('session: ', session);
+  // const userId = session?.user?.id;
+  // const userImage = session?.user?.image;
+
+/*
+
+  /*
+  const handleMenuItemClick = (menuId) => {
+    // closeMenu();
+    setActiveMenuId(menuId);
+  };
+*/
+// const { data: session } = useSession();
+// console.log(session?.user?.id);
+// const [isOpen, toggleOpen] = useCycle(false, true);
+// const containerRef = useRef(null);
+//  const { height } = useWindowSize();
+
+// import { useSession } from 'next-auth/react';
+
+// import { getServerSession } from "next-auth/next"
+// import { authOptions } from "../api/auth/[...nextauth]";
+// import Image from "next/image";
+// import menuIcon_01 from "./public/menuIcon_01.svg";
+// import Avatar from './Avatar';
+// import NavBar from './NavBar';
+// import SideNavBar from './SideNavBar';
+// import Search from "./Search";
 
 /*
 // Hook

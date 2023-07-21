@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
-import stylesA from '/styles/BasicAlert/BasicAlert.module.css';
-import styles from '/styles/Home.module.css';
+import stylesA from 'styles/BasicAlert/BasicAlert.module.css';
+// styles/BasicAlert/BasicAlert.module.css
+import styles from '../../styles/Home.module.css';
+// ../../../../styles/Home.module.css
 
 export const BasicAlert = () => {
   return (
@@ -45,10 +47,10 @@ export const BasicAlertTran = () => {
   };
 
   const [estadomodal, setEstadomodal] = useToggle();
-
+  // x-data="{ isOpen: false }"
   return (
     <div>
-      <div x-data="{ isOpen: false }" className="relative ...">
+      <div className="relative ...">
         <button
           type="button"
           onClick={() => setEstadomodal(!estadomodal)}

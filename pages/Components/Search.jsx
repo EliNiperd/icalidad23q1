@@ -1,6 +1,6 @@
-//import Image from "node_modules/next/image";
+// import Image from "node_modules/next/image";
 import Link from 'node_modules/next/link';
-import { GoBell, GoThreeBars } from 'react-icons/go';
+import { GoBell, GoFilter } from 'react-icons/go';
 
 const Search = () => {
   return (
@@ -21,20 +21,20 @@ const Search = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <GoThreeBars className="block  h-7 w-7" aria-hidden="true" />
+            <GoFilter className="block  h-7 w-7" aria-hidden="true" />
           </button>
           <div
             className="collapse navbar-collapse flex-grow items-center bg-blue-600 "
             id="navbarSupportedContent"
           >
-            {/*<!-- Colocar Search here!!!! -->*/}
+            {/* <!-- Colocar Search here!!!! --> */}
             <a
               className="flex items-center text-gray-900 over:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1"
               href="#"
             >
               bien
             </a>
-            {/*<!-- Start Left links -->*/}
+            {/* <!-- Start Left links --> */}
             <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
               <li className="nav-item p-2">
                 <Link href={'/login'}>
@@ -64,13 +64,13 @@ const Search = () => {
                 </Link>
               </li>
             </ul>
-            {/*<!-- End Left links -->*/}
+            {/* <!-- End Left links --> */}
           </div>
-          {/*<!-- End Collapsible wrapper -->*/}
+          {/* <!-- End Collapsible wrapper --> */}
 
-          {/*<!-- Start - Right elements -->*/}
+          {/* <!-- Start - Right elements --> */}
           <div className="flex items-center relative">
-            {/*<!-- Start - Icons -->*/}
+            {/* <!-- Start - Icons --> */}
             <div className="dropdown relative">
               <a
                 className=" text-gray-500  hover:text-gray-700 focus:text-gray-700 mr-4 dropdown-toggle 
@@ -169,7 +169,7 @@ const Search = () => {
               </ul>
             </div>
           </div>
-          {/*<!-- Right elements -->*/}
+          {/* <!-- Right elements --> */}
         </div>
       </nav>
     </div>

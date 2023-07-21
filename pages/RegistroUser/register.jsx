@@ -1,4 +1,4 @@
-/*import getPool from './database/connection';
+/* import getPool from './database/connection';
 const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 
@@ -30,9 +30,7 @@ export default async (req, res) => {
     {
         return res.status(405).json({error: "This request only supports POST requests"})
     }
-}*/
-
-import React from 'react';
+} */
 
 const register = () => {
   return <div>register</div>;
