@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useSession, getSession } from 'next-auth/react';
 // import styles from "../styles/Home.module.css";
 
-const DashBoard_old = () => {
+const DashBoardOld = () => {
   /* const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -132,4 +132,4 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default DashBoard_old;
+export default DashBoardOld;

@@ -1,11 +1,7 @@
 import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const IcalidadContext = createContext();
-
-export const menuDataInitial = {
-  idMenuFather: 0,
-  idMenu: 0,
-};
 
 export const IcalidadProvider = ({ children }) => {
   const [menuDataMenu, setDataMenu] = useState(menuDataInitial);
@@ -15,6 +11,20 @@ export const IcalidadProvider = ({ children }) => {
       {children}
     </IcalidadContext.Provider>
   );
+};
+
+const menuDataInitial = {
+  idMenuFather: 149,
+  idMenu: 149,
+};
+
+menuDataInitial.propTypes = {
+  idMenuFather: PropTypes.number.isRequired,
+  idMenu: PropTypes.number.isRequired,
+};
+
+IcalidadProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default IcalidadProvider;

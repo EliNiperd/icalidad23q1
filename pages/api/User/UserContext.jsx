@@ -1,5 +1,5 @@
-import React from 'react';
 import sql from 'mssql';
+import React from 'react';
 
 const user = {
   userName: 'erodriguez',
@@ -28,14 +28,14 @@ const dbSettings = {
 export const getPool = async () => {
   try {
     const poolSQL = await sql.connect(dbSettings);
-    //return poolSQL
+    // return poolSQL
     // make sure that any items are correctly URL encoded in the connection string where id = ${value}
-    //await sql.connect('Server=localhost,1433;Database=iCalidadLamesa;User Id=sa;Password=Niperd2012;Encrypt=true')
+    // await sql.connect('Server=localhost,1433;Database=iCalidadLamesa;User Id=sa;Password=Niperd2012;Encrypt=true')
     const result = await poolSQL
       .request()
       .query('select * from Gen_TEmpleado ');
     return result.json();
-    //console.dir(result)
+    // console.dir(result)
   } catch (err) {
     console.log(err);
     // ... error checks
@@ -43,7 +43,7 @@ export const getPool = async () => {
 };
 
 const UserContext = React.createContext({
-  user: user,
+  user,
 });
 
 export default UserContext;

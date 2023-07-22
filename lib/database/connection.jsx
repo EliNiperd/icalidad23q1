@@ -1,6 +1,6 @@
 import msql from 'mssql';
 
-/*global Map*/
+/* global Map */
 const pools = new Map();
 
 const dbSettings = {
@@ -21,8 +21,8 @@ const dbSettings = {
 };
 
 export const usegetPool = async (name) => {
-  //console.log(process.env.NEXT_PUBLIC_DB_USER)
-  //console.log(dbSettings);
+  // console.log(process.env.NEXT_PUBLIC_DB_USER)
+  // console.log(dbSettings);
 
   if (!pools.has(name)) {
     if (!dbSettings) {
@@ -39,7 +39,7 @@ export const usegetPool = async (name) => {
   }
   return pools.get(name);
 };
-/*global Promise*/
+/* global Promise */
 export const closePools = async () =>
   Promise.all(
     Array.from(pools.values()).map((connect) => {
@@ -50,7 +50,7 @@ export const closePools = async () =>
 export const connectDB = async () => {
   try {
     const pool = await msql.connect(dbSettings);
-    //pool().connected()
+    // pool().connected()
     return pool;
   } catch (error) {
     console.log(error);
@@ -64,7 +64,7 @@ export const typeParameter = async () => {
 
 export default usegetPool;
 
-//import sql from 'mssql'
+// import sql from 'mssql'
 
 /*
 const dbSettings = {
@@ -84,11 +84,11 @@ const dbSettings = {
     }
   }
 */
-//const Context = React.creacteContext({})
+// const Context = React.creacteContext({})
 /*
 export function PoolContextProvider({ children}){
   
-}*/
+} */
 /*
    export default async function getPool() {
 
@@ -106,5 +106,5 @@ export function PoolContextProvider({ children}){
         //    console.log(err)
             // ... error checks
         //}
-    }*/
-//getConnection();
+    } */
+// getConnection();

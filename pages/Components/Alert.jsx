@@ -9,8 +9,8 @@ const Alert = ({
   text,
   highlightedWords,
 }) => {
-  //console.log( "Alert se ejecuta: type - ", type, " texto - ", text, " words - ", highlightedWords);
-  //Definir los estados de la alerta
+  // console.log( "Alert se ejecuta: type - ", type, " texto - ", text, " words - ", highlightedWords);
+  // Definir los estados de la alerta
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -25,7 +25,8 @@ const Alert = ({
 
   const handleClose = () => {
     setVisible(false); // Ocultar la alerta cuando el usuario cierre manualmente
-    () => onClose;
+    const close = () => onClose();
+    console.log('close: ', close);
   };
 
   const alertClasses =
@@ -36,9 +37,9 @@ const Alert = ({
   // if(position){
   //     alertClasses += ` alert-${position}`;
   // }
-  //console.log("visble: ", visible, "alertClasses: ", alertClasses, "type: ", type, "text: ", text, "highlightedWords: ", highlightedWords, "duration: ", duration, "onClose: ", onClose, "position: ", position, "successText: ", "infoText: ", "warningText:)");
+  // console.log("visble: ", visible, "alertClasses: ", alertClasses, "type: ", type, "text: ", text, "highlightedWords: ", highlightedWords, "duration: ", duration, "onClose: ", onClose, "position: ", position, "successText: ", "infoText: ", "warningText:)");
   if (!visible) {
-    return null; //No renderiza la alert si no es visible
+    return null; // No renderiza la alert si no es visible
   }
 
   let alertContent;
@@ -89,9 +90,7 @@ const Alert = ({
               />
             </svg>
           </div>
-          <div className="text-sm font-medium text-green-500">
-            {successText}
-          </div>
+          <div className="text-sm font-medium text-green-500">{text}</div>
         </div>
       );
       break;
@@ -114,7 +113,7 @@ const Alert = ({
               />
             </svg>
           </div>
-          <div className="text-sm font-medium text-blue-500">{infoText}</div>
+          <div className="text-sm font-medium text-blue-500">{text}</div>
         </div>
       );
       break;
@@ -137,9 +136,7 @@ const Alert = ({
               />
             </svg>
           </div>
-          <div className="text-sm font-medium text-yellow-500">
-            {warningText}
-          </div>
+          <div className="text-sm font-medium text-yellow-500">{text}</div>
         </div>
       );
       break;
