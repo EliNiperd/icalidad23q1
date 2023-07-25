@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { IoMenuSharp } from 'react-icons/io5';
 import SideNavBar from './SideNavBar';
 import Avatar from './Avatar';
 import Search from './Search';
-import { useContext, useEffect } from 'react';
 import { IcalidadContext } from '../contexts/IcalidadContext';
 
 const HomeDashBoard = ({ children }) => {
@@ -13,7 +12,7 @@ const HomeDashBoard = ({ children }) => {
   const [contador, setContador] = useState(0);
 
   const { menuDataMenu, setDataMenu } = useContext(IcalidadContext);
-  /*useEffect(() => {
+  /* useEffect(() => {
     if (menuDataMenu.idMenu === null || menuDataMenu.idMenu === 0) {
       setDataMenu({
         ...menuDataMenu,

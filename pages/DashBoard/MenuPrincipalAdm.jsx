@@ -1,9 +1,9 @@
 import { useSession, SignOut } from 'next-auth/react';
 import useSWR from 'swr';
 import Link from 'next/link';
-//import { useContext } from 'react';
+// import { useContext } from 'react';
 
-//import { IcalidadContext } from '../contexts/IcalidadContext';
+// import { IcalidadContext } from '../contexts/IcalidadContext';
 // import GetIcon from '../Components/GetIcon';
 
 import * as aiIcons from 'react-icons/ai';
