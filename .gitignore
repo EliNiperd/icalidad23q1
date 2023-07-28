@@ -47,9 +47,17 @@ yarn-error.log*
 # next.js
 .next/*
 
+# Keys Públicas y Privadas
+Eli*
+*.key
+*.pub
+
+
+
 # Excecution files in IIS Server
 Web.config
 server.js
 ```
+
 
 
