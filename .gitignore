@@ -28,6 +28,16 @@ status*
 .env.test.local
 .env.production.local
 
+*.log
+*.swp
+status*
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 
 # debug
 npm-debug.log*
@@ -46,6 +56,12 @@ yarn-error.log*
 
 # next.js
 .next/*
+
+# Keys Públicas y Privadas
+Eli*
+*.key
+*.pub
+
 
 # Excecution files in IIS Server
 Web.config
