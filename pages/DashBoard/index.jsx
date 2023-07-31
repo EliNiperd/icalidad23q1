@@ -48,14 +48,6 @@ const HomeDashBoard = ({ children }) => {
         </container>
         <container className="w-max ">
           <Avatar></Avatar>
-          <h1 className="pl-1 font-semibold text-xl">iCalidad</h1>
-        </container>
-        <container className="flex flex-row">
-          {' '}
-          <Search></Search>
-        </container>
-        <container className="w-max ">
-          <Avatar></Avatar>
         </container>
       </header>
       <div className="flex flex-1 ">
@@ -64,17 +56,6 @@ const HomeDashBoard = ({ children }) => {
         transition-all duration-500 transform ${
           isMenuOpen ? '' : '-translate-x-full'
         }`}
-        >
-          <SideNavBar
-            activeMenuId={activeMenuId}
-            isMenuOpen={isMenuOpen}
-            menuId={activeMenuId}
-            onCloseMenu={closeMenu}
-            menuDataMenu={menuDataMenu}
-            setDataMenu={setDataMenu}
-          />
-        </div>
-        <div className="flex-1 ml-6 p-4 " onClick={closeMenu}>
         >
           <SideNavBar
             activeMenuId={activeMenuId}
@@ -95,12 +76,7 @@ const HomeDashBoard = ({ children }) => {
 
 export default HomeDashBoard;
 
-export default HomeDashBoard;
-
 /*
-
-
-
 
 
 
@@ -122,38 +98,6 @@ export async function getServerSideProps({ context }) {
   };
 }
 */
-
-/*
-
-  // const { data: session } = useSession();
-  // console.log('session: ', session);
-  // const userId = session?.user?.id;
-  // const userImage = session?.user?.image;
-
-/*
-
-  /*
-  const handleMenuItemClick = (menuId) => {
-    // closeMenu();
-    setActiveMenuId(menuId);
-  };
-*/
-// const { data: session } = useSession();
-// console.log(session?.user?.id);
-// const [isOpen, toggleOpen] = useCycle(false, true);
-// const containerRef = useRef(null);
-//  const { height } = useWindowSize();
-
-// import { useSession } from 'next-auth/react';
-
-// import { getServerSession } from "next-auth/next"
-// import { authOptions } from "../api/auth/[...nextauth]";
-// import Image from "next/image";
-// import menuIcon_01 from "./public/menuIcon_01.svg";
-// import Avatar from './Avatar';
-// import NavBar from './NavBar';
-// import SideNavBar from './SideNavBar';
-// import Search from "./Search";
 
 /*
 
