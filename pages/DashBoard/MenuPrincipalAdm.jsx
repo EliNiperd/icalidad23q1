@@ -12,6 +12,8 @@ import * as mdIcons from 'react-icons/md';
 import * as riIcons from 'react-icons/ri';
 import * as bsIcons from 'react-icons/bs';
 import * as hiIcons from 'react-icons/hi';
+import * as hi2Icons from 'react-icons/hi2';
+import * as fa6Icons from 'react-icons/fa6';
 import PropTypes from 'prop-types';
 
 const classH1Menu = 'text-base inline-block ';
@@ -30,6 +32,8 @@ const GetIcon = ({ icon, className }) => {
     iconsMap.set('Ri', riIcons);
     iconsMap.set('Bs', bsIcons);
     iconsMap.set('Hi', hiIcons);
+    iconsMap.set('Hi', hi2Icons);
+    iconsMap.set('Fa', fa6Icons);
 
     return iconsMap.get(iconName.substring(0, 2));
   };
@@ -76,7 +80,7 @@ function DataElement(props) {
     menuDataMenu.idMenuFather
   );
 */
-  console.log(`/api/User/dasBoardUser/${idUser}/23/${menuDataMenu.idMenu}`);
+  // console.log(`/api/User/dasBoardUser/${idUser}/23/${menuDataMenu.idMenu}`);
   const { data, error, status } = useSWR(
     // `/api/User/dasBoardUser/92/23/149`
     `/api/User/dasBoardUser/${idUser}/23/${menuDataMenu.idMenu}`

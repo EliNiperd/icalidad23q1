@@ -1,14 +1,14 @@
 // import HomeDashBoard from "../DashBoard";
-import Prueba from '../DashBoard/Prueba';
+import HomeDashBoard from '../DashBoard/index';
 
 const AdminIcalidad = () => {
   return (
     <>
-      <Prueba>
+      <HomeDashBoard>
         <div className="text-4xl h-full  bg-white text-center text-black">
           Admin iCalidad
         </div>
-      </Prueba>
+      </HomeDashBoard>
     </>
   );
 };
