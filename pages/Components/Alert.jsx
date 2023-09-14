@@ -37,7 +37,27 @@ const Alert = ({
   // if(position){
   //     alertClasses += ` alert-${position}`;
   // }
-  // console.log("visble: ", visible, "alertClasses: ", alertClasses, "type: ", type, "text: ", text, "highlightedWords: ", highlightedWords, "duration: ", duration, "onClose: ", onClose, "position: ", position, "successText: ", "infoText: ", "warningText:)");
+  console.log(
+    'visble: ',
+    visible,
+    'alertClasses: ',
+    alertClasses,
+    'type: ',
+    type,
+    'text: ',
+    text,
+    'highlightedWords: ',
+    highlightedWords,
+    'duration: ',
+    duration,
+    'onClose: ',
+    onClose,
+    'position: ',
+    position,
+    'successText: ',
+    'infoText: ',
+    'warningText:)'
+  );
   if (!visible) {
     return null; // No renderiza la alert si no es visible
   }

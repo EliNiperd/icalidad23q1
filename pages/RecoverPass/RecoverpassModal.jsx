@@ -4,7 +4,7 @@ const RecoverpassModal = ({ children, estado, cambiarEstado, titulo }) => {
     <>
       {estado && (
         <div
-          className="w-full h-full fixed top-0 left-0 bg-blue-900 bg-opacity-50 
+          className="animate-jump-in animate-once animate-normal w-full h-full fixed top-0 left-0 bg-blue-900 bg-opacity-50 
           flex items-center justify-center"
         >
           <div

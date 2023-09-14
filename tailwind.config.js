@@ -149,7 +149,7 @@ module.exports = {
       slate: colors.slate,
       gray: colors.gray,
       zinc: colors.zinc,
-      neutral: colors.neutral,
+      // neutral: colors.neutral,
       stone: colors.stone,
       red: colors.red,
       orange: colors.orange,
@@ -160,7 +160,6 @@ module.exports = {
       emerald: colors.emerald,
       teal: colors.teal,
       cyan: colors.cyan,
-      neutral: colors.neutral,
       sky: {
         100: '#F7FBFE',
         200: '#C0E5FA',
