@@ -1,5 +1,6 @@
-import HomeDashBoard from '../../DashBoard/index';
-import Catalogo from '../../Components/Catalogo';
+
+import Catalogo from '@/pages/Components/Catalogo';
+import HomeDashBoard from '@/pages/DashBoard/index';
 
 const index = () => {
   return (

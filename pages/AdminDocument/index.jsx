@@ -1,5 +1,4 @@
 import HomeDashBoard from '../DashBoard';
-// import Prueba from '../DashBoard/Prueba';
 
 const AdminDocument = () => {
   return (

@@ -24,8 +24,9 @@ export default NextAuth({
             typeParam.NVarChar(20),
             credentials.password
           );
-          const result = await request.execute('PV_Gen_TEmpleadoLogin');
 
+          const result = await request.execute('PV_Gen_TEmpleadoLogin');
+          // console.log(result, 'user: ', credentials.email, 'password: ', credentials.password);
           const { rowsAffected, recordset } = result;
           // console.log("rows: ", rowsAffected[0], "records: ", recordset[0]);
           if (rowsAffected[0] > 0) {
@@ -58,7 +59,7 @@ export default NextAuth({
             } */
           } else throw new Error('Por favor, verifica tu usuario o contraseña');
         } catch (error) {
-          // console.log(error);
+          console.log(error);
           throw new Error('Ocurrió un error: ' + error.message);
           // return error;
         }

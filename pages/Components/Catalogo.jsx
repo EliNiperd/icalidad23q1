@@ -28,13 +28,16 @@ const Catalogo = () => {
   const [estadomodal, setEstadomodal] = useToggle();
   // const [estadomodalEdit, setEstadomodalEdit] = useToggle();
   const [selectedManagment, setSelectedManagment] = useState(0);
-  // const [selectedArea, setSelectedArea] = useState(0);
+  const [selectedArea, setSelectedArea] = useState(0);
+
+  console.log('selectedArea: ', selectedArea);
 
   const [idRegistro, setIdRegistro] = useState(0); // 0 = Nuevo registro
   const [claveGerencia, setClaveGerencia] = useState('');
   const [nombreGerencia, setNombreGerencia] = useState('');
   const [idEstatusRegistro, setIdEstatusRegistro] = useState(true); // true = Activo, false = Inactivo
   const [title, setTitle] = useState('Crear Registro');
+  const [tipoRegistro, setTipoRegistro] = useState('Gerencia'); // ['Gerencia', 'Área', 'Puesto', 'Empleado']
 
   // const [isOpen, setIsOpen] = useState(false);
 
@@ -107,18 +110,14 @@ const Catalogo = () => {
                         <a
                           onClick={() => {
                             setEstadomodal(!estadomodal);
+                            setIdRegistro(0);
+                            setSelectedArea(0);
+                            setTitle('Crear área');
+                            setTipoRegistro('Área');
                           }}
                         >
                           Crear
                         </a>
-                        {
-                          // onClick={() => {
-                          //  setEstadomodal(!estadomodal);
-                          //  setIdRegistro(Managment.IdGerencia);
-                          // setClaveGerencia(Managment.ClaveGerencia);
-                          // setNombreGerencia(Managment.NombreGerencia);
-                          // }}
-                        }
                       </li>
                       <li>
                         <a>Editar</a>
@@ -177,6 +176,7 @@ const Catalogo = () => {
                           setIdRegistro(0);
                           setSelectedManagment(0);
                           setTitle('Crear Registro');
+                          setTipoRegistro('Gerencia');
                         }}
                       >
                         Crear
@@ -191,6 +191,7 @@ const Catalogo = () => {
                           setNombreGerencia(Managment.NombreGerencia);
                           setIdEstatusRegistro(Managment.IdEstatusGerencia);
                           setTitle('Editar Registro');
+                          setTipoRegistro('Gerencia');
                         }}
                       >
                         Editar
@@ -244,6 +245,7 @@ const Catalogo = () => {
           claveRegistro={claveGerencia}
           nombreRegistro={nombreGerencia}
           idEstatusRegistro={idEstatusRegistro}
+          tiporegistro={tipoRegistro}
         />
       </ModalCatalog>
     </>

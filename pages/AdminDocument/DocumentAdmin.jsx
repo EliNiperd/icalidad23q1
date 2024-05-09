@@ -1,6 +1,6 @@
-import { /* useState, */ useMemo } from 'react';
+// import { /* useState, */ useMemo } from 'react';
 
-import Table from '../../Components/TableGlobal';
+// import TableGlobal from '../Components/TableGlobal';
 // import { MapProvider } from './context/map-context';
 
 const getData = () => [
@@ -74,40 +74,41 @@ const getData = () => [
   },
 ];
 export default function DocumentAdmin() {
+  console.log('DocumentAdmin: ', getData());
   // const [mapFly, setMapFly] = useState(null);
-
-  const columns = useMemo(
-    () => [
-      {
-        Header: 'Name',
-        accessor: 'name',
-      },
-      {
-        Header: 'Title',
-        accessor: 'title',
-      },
-      {
-        Header: 'Locate',
-        accessor: 'locate',
-        Cell: 'LocateCell',
-        posAccessor: 'posCoords',
-      },
-      {
-        Header: 'Status',
-        accessor: 'status',
-        Cell: 'StatusPill',
-      },
-      {
-        Header: 'Role',
-        accessor: 'role',
-        Filter: 'SelectColumnFilter',
-        filter: 'includes',
-      },
-    ],
-    []
-  );
-
-  const data = useMemo(() => getData(), []);
+  /*
+    const columns = useMemo(
+      () => [
+        {
+          Header: 'Name',
+          accessor: 'name',
+        },
+        {
+          Header: 'Title',
+          accessor: 'title',
+        },
+        {
+          Header: 'Locate',
+          accessor: 'locate',
+          Cell: 'LocateCell',
+          posAccessor: 'posCoords',
+        },
+        {
+          Header: 'Status',
+          accessor: 'status',
+          Cell: 'StatusPill',
+        },
+        {
+          Header: 'Role',
+          accessor: 'role',
+          Filter: 'SelectColumnFilter',
+          filter: 'includes',
+        },
+      ],
+      []
+    );
+  */
+  // const data = useMemo(() => getData(), []);
 
   return (
     <>
@@ -118,7 +119,7 @@ export default function DocumentAdmin() {
               <h1 className="text-xl font-semibold">Find Transmitters</h1>
             </div>
             <div className="mt-4">
-              <Table columns={columns} data={data} />
+              {/* <TableGlobal columns={columns} data={data} /> */}
               {/* <Table columns={columns} data={data} map={mapFly} /> */}
             </div>
           </main>

@@ -13,17 +13,17 @@ const Prueba = ({ children }) => {
           </li>
           <li>
             <Link href="/AdminAction">
-              <a>AdminAction</a>
+              AdminAction
             </Link>
           </li>
           <li>
             <Link href="/AdminAudit">
-              <a>AdminAudit</a>
+              AdminAudit
             </Link>
           </li>
           <li>
             <Link href="/AdminIcalidad">
-              <a>AdminIcalidad</a>
+              AdminIcalidad
             </Link>
           </li>
         </ul>

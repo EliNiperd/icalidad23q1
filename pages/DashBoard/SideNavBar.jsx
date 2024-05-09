@@ -1,3 +1,4 @@
+
 import { IoCloseSharp } from 'react-icons/io5';
 import { MenuPrincipalAdm } from './MenuPrincipalAdm';
 
@@ -11,14 +12,13 @@ export function SideNavBar({
 }) {
   return (
     <div
-      className={`fixed top-0 left-0 w-56 h-full shadow-md z-10 
-      overflow-y-auto transition-all duration-600 transform ${
-        isMenuOpen ? '' : '-translate-x-full backdrop-blur-sm'
-      }`}
+      className={`fixed top-0 left-0 w-56 h-full shadow-md z-10 bg-secondary  
+      overflow-y-auto transition-all duration-600 transform ${isMenuOpen ? '' : '-translate-x-full backdrop-blur-sm'
+        }`}
     >
       <div className="flex flex-row-reverse  px-6 py-4">
         <IoCloseSharp
-          className="text-3xl text-accent hover:cursor-pointer"
+          className="text-3xl text-neutral-900 hover:cursor-pointer"
           onClick={onCloseMenu}
         ></IoCloseSharp>
       </div>

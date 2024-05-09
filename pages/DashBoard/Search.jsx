@@ -1,11 +1,12 @@
 const Search = () => {
   return (
     <>
-      <div className="form-control">
+      <div className="">
         <input
           type="text"
           placeholder="Buscar..."
-          className="input input-bordered w-96"
+          className="input input-bordered w-96 rounded-lg p-2 "
+          spellCheck="false"
         />
       </div>
     </>

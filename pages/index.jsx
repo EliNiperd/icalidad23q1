@@ -1,34 +1,21 @@
 import { useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
-
+import LINK from 'next/link';
 import Image from 'next/image';
 
-import Loginimage from '../public/login_Secure.svg';
+import Loginimage from '../public/login_Secure.png';
 import LogoNiperd from '../public/logoNiperd_image.png';
 
 import { signIn, csrfToken, getSession } from 'next-auth/react';
 // , getCsrfToken, getSession, useSession
 // import Image from 'next/image';
-import LINK from 'next/link';
 
-// import { useForm } from "react-hook-form";
 import { Formik, ErrorMessage, Form, Field } from 'formik';
 import * as Yup from 'yup';
-
-// import { LogoNiperd } from '../public/logoNiperd_image.png';
-
 import { IoCheckmarkCircle } from 'react-icons/io5';
 
 import RecoverpassModal from './RecoverPass/RecoverpassModal';
 import Alert from './Components/Alert';
-// import { object } from 'node_modules/yup/index';
-
-// import {  Validador } from "./Components/BasicAlert";
-
-/// /"dev": "next-dev-https --https --qr ",
-
-// import DetailUser from './DashBoard/DetailUser';
-// import useSWR from 'swr';
 
 // Hook
 // Parameter is the boolean, with default "false" value
@@ -44,11 +31,6 @@ const useToggle = (initialState = false) => {
 };
 
 export default function Home() {
-  // const { data, status } = useSession;
-  /* const { register, handleSubmit } = useForm({
-    mode: "onBlur",
-  }); */
-
   const router = useRouter();
   const [estadomodal, setEstadomodal] = useToggle();
 
@@ -118,7 +100,7 @@ export default function Home() {
                 <Form
                   onSubmit={handleSubmit}
                   className=" rounded-lg place-self-center border-4 p-6
-                shadow-xl shadow-[48,169,238]"
+                shadow-xl shadow-neutral"
                 >
                   <h2 className="text-4xl font-bold text-left  ">
                     Iniciar sesión en iCalidad
@@ -172,8 +154,8 @@ export default function Home() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full my-5 py-3 mt-3 bg-[#30a9ee] shadow-md shadow-[#30a9ee]/50
-                        hover:shadow-[#30a9ee]/50 hover:bg-[#30a9ee]/50 text-white font-semibold rounded-lg"
+                    className="w-full my-5 py-3 mt-3 bg-primary shadow-md shadow-primary/50
+                        hover:shadow-primary/50 hover:bg-primary/50 text-white font-semibold rounded-lg"
                   >
                     {isSubmitting ? 'Procesando...' : 'Iniciar Sesión'}
                   </button>
@@ -207,12 +189,14 @@ export default function Home() {
             </Formik>
           </div>
         </div>
-        <div className="bg-sky-100 grid grid-cols-1 gap-2 grid-rows-1 w-full h-full inset-y-0 right-0">
+        <div className="bg-secondary bl-neutral border-2 grid grid-cols-1 gap-2 grid-rows-1 w-full h-full inset-y-0 right-0">
           <div className="  object-center ">
             <Image
               src={Loginimage}
               layout="responsive"
-              priority={true}
+              placeholder="blur"
+              as="image"
+              blurDataURL=""
               alt="Login"
             />
           </div>

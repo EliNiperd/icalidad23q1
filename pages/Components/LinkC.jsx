@@ -14,7 +14,7 @@ const Link = (
       replace={replace}
       prefetch={false}
       className={className}
-    >
+      legacyBehavior>
       {children}
     </NextLink>
   ) : (

@@ -2,8 +2,9 @@ import { StrictMode } from 'react';
 import '../styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { SWRConfig } from 'swr';
-import { IcalidadProvider } from './contexts/IcalidadContext';
-import { ChakraProvider } from '@chakra-ui/react';
+import { IcalidadProvider } from '../contexts/IcalidadContext';
+// import { ChakraProvider } from '@chakra-ui/react';
+
 /*
 export function reportWebVitals(metric) {
   switch (metric.name) {
@@ -37,7 +38,8 @@ export function reportWebVitals(metric) {
 }
 */
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  //  mutate(key, data, options)
+  // mutate(key, data, options);
+
   // refreshInterval: 3000,
   return (
     <SessionProvider session={session} refetchInterval={5 * 60}>
@@ -48,11 +50,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
               fetch(resource, init).then((res) => res.json()),
           }}
         >
-          <ChakraProvider>
-            <StrictMode>
-              <Component {...pageProps} />
-            </StrictMode>
-          </ChakraProvider>
+          {/* <ChakraProvider> */}
+          <StrictMode>
+            <Component {...pageProps} />
+          </StrictMode>
+          {/* </ChakraProvider> */}
         </SWRConfig>
       </IcalidadProvider>
     </SessionProvider>
