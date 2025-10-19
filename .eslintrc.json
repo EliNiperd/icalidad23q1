@@ -1,0 +1,13 @@
+// Ejemplo de configuración actualizada para Next.js
+module.exports = {
+  extends: [
+    'next/core-web-vitals',
+    'eslint:recommended',
+    '@typescript-eslint/recommended'
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  rules: {
+    // Tus reglas personalizadas
+  }
+};

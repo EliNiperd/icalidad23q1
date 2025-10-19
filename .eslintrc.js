@@ -24,9 +24,11 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': RULES.OFF,
-    'react/jsx-uses-react': RULES.OFF,
+    // 'react/jsx-uses-react': RULES.OFF,
     'react/prop-types': RULES.OFF,
     'jsx/ts.implicitProjectConfig.checkJs': RULES.OFF,
     'react/no-unescaped-entities': RULES.OFF,
+    'no-restricted-exports': RULES.OFF,
+    'no-unused-vars': RULES.OFF,
   },
 };

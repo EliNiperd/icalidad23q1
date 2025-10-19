@@ -20,6 +20,8 @@
 *.pem
 *.log
 *.swp
+*.zip
+*.7z
 status*
 
 # local env files

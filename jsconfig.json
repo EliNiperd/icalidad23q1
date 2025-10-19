@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "ESNext"
+    "paths": {
+      "@/*": ["./*"]
+    },
+    //"baseUrl": ".",
+    //"target": "ESNext"
   }
 }
